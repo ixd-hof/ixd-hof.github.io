@@ -1,1 +1,126 @@
-Hello!
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>360&deg; Tour</title>
+    <link rel="stylesheet" href="css/bundle.css">
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="helper.js"></script>
+    <script src="hotspot.js"></script>
+    <script src="panorama.js"></script>
+    <script src="tour.js"></script>
+  </head>
+  <body>
+    <a-scene cursor="rayOrigin: mouse">
+      <a-assets>
+        <a-mixin id="hotspot-text" text="font: exo2bold; width: 5" geometry="primitive: plane; width: 1.6; height: 0.4" material="color: black;" position="0 -0.6 0"></a-mixin>
+        <a-mixin id="hotspot-target" geometry="primitive: octahedron; radius: 0.2;" material="flatShading: true; color: rgb(255, 0, 161)"></a-mixin>
+        <!--<img id="pano-01" src="https://nextcloud.hof-university.de/apps/files_sharing/publicpreview/HgHmKfAYmFzjJCw?x=5760&y=2880&a=true&file=AGeb%25C3%25A4ude_0_Gang.jpg&scalingup=0" crossorigin="anonymous">-->
+        <img id="pano-01" src="https://www.hof-university.de/fileadmin/user_upload/header/Hochschule_Hof_Headerbild_02.jpg" crossorigin="anonymous">
+
+        <img id="pano-02" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_02.jpg?v=1627558409564">
+        <!--<img id="pano-03" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_03.jpg?v=1627558409564">
+        <img id="pano-04" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_04.jpg?v=1627558409564">
+        <img id="pano-05" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_05.jpg?v=1627558409564">
+        <img id="pano-06" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_06.jpg?v=1627558409564">
+        <img id="pano-07" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_07.jpg?v=1627558409564">
+        <img id="pano-08" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_08.jpg?v=1627558409564">
+        <img id="pano-09" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_09.jpg?v=1627558409564">
+        <img id="pano-10" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_10.jpg?v=1627558409564">
+        <img id="pano-11" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_11.jpg?v=1627558409564">
+        <img id="pano-12" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_12.jpg?v=1627558409564">
+        <img id="pano-13" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_13.jpg?v=1627558409564">
+        <img id="pano-14" src="https://cdn.glitch.com/c8b0d2c2-3d00-4a85-b13a-f9dab33042f3%2FPano_14.jpg?v=1627558409564">-->
+      </a-assets>
+
+      <a-tour>
+        <a-panorama id="panorama-01" src="#pano-01" rotation="0 -90 0"></a-panorama>
+        <a-panorama id="panorama-02" src="#pano-02" rotation="0 -100 0"></a-panorama>
+        <!--<a-panorama id="panorama-03" src="#pano-03" rotation="0 -100 0"></a-panorama>
+        <a-panorama id="panorama-04" src="#pano-04" rotation="0 -100 0"></a-panorama>
+        <a-panorama id="panorama-05" src="#pano-05" rotation="0 -100 0"></a-panorama>
+        <a-panorama id="panorama-06" src="#pano-06" rotation="0 80 0"></a-panorama>
+        <a-panorama id="panorama-07" src="#pano-07" rotation="0 90 0"></a-panorama>
+        <a-panorama id="panorama-08" src="#pano-08" rotation="0 90 0"></a-panorama>
+        <a-panorama id="panorama-09" src="#pano-09" rotation="0 -100 0"></a-panorama>
+        <a-panorama id="panorama-10" src="#pano-10" rotation="0 50 0"></a-panorama>
+        <a-panorama id="panorama-11" src="#pano-11" rotation="0 80 0"></a-panorama>
+        <a-panorama id="panorama-12" src="#pano-12" rotation="0 70 0"></a-panorama>
+        <a-panorama id="panorama-13" src="#pano-13" rotation="0 80 0"></a-panorama>
+        <a-panorama id="panorama-14" src="#pano-14" rotation="0 -100 0"></a-panorama>-->
+
+        <a-hotspot id="pano-01-02" for="panorama-01" to="panorama-02" mixin="hotspot-target" position="4 0 -2" rotation="0 -90 0">
+          <a-text value="Weiter1" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <!--
+        <a-hotspot id="pano-02-03" for="panorama-02" to="panorama-03" mixin="hotspot-target" position="4 0 0" rotation="0 -90 0">
+          <a-text value="Weiter2" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-03-04" for="panorama-03" to="panorama-04" mixin="hotspot-target" position="4 0 0" rotation="0 -90 0">
+          <a-text value="Weiter3" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-04-05" for="panorama-04" to="panorama-05" mixin="hotspot-target" position="4 0 -1" rotation="0 -90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-05-06" for="panorama-05" to="panorama-06" mixin="hotspot-target" position="-4 0 3" rotation="0 90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-06-07" for="panorama-06" to="panorama-07" mixin="hotspot-target" position="-4 0 0.5" rotation="0 90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-07-08" for="panorama-07" to="panorama-08" mixin="hotspot-target" position="-4 0 2" rotation="0 90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-08-09" for="panorama-08" to="panorama-09" mixin="hotspot-target" position="4 0 0" rotation="0 -90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-09-11" for="panorama-09" to="panorama-11" mixin="hotspot-target" position="4 0 0" rotation="0 -90 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-11-10" for="panorama-11" to="panorama-10" mixin="hotspot-target" position="-4 0 0" rotation="0 90 0">
+          <a-text value="Dachshoehle" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-10-09" for="panorama-10" to="panorama-11" mixin="hotspot-target" position="4 0 2" rotation="0 -90 0">
+          <a-text value="Ausgang" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-11-12" for="panorama-11" to="panorama-12" mixin="hotspot-target" position="-1 0 4" rotation="0 130 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-12-13" for="panorama-12" to="panorama-13" mixin="hotspot-target" position="-1 0 4" rotation="0 130 0">
+          <a-text value="Weiter" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+        
+        <a-hotspot id="pano-13-01" for="panorama-13" to="panorama-01" mixin="hotspot-target" position="4 0 2" rotation="0 -90 0">
+          <a-text value="Start" align="center" mixin="hotspot-text"></a-text>
+        </a-hotspot>
+      -->
+      </a-tour>
+
+      <a-entity camera look-controls>
+        <a-entity 
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+          cursor="fuse: true; maxDistance: 400;"
+          material="color: black; shader: flat"
+          position="0 0 -3"
+          geometry="primitive: ring; radiusInner: 0.1; radiusOuter: 0.15;"
+          raycaster="objects: a-hotspot">
+        </a-entity>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
