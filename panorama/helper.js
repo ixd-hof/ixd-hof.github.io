@@ -75,7 +75,102 @@ AFRAME.registerComponent('hotspot-helper', {
     var uiContainer = document.createElement('div');
     uiContainer.id = 'hh';
     var markup = `
-   
+    <style>
+      #hh-heading {
+        font-family: Consolas, Andale Mono, monospace;
+      }
+
+      #hh {
+        background: #333;
+        color: #fff;
+        font-family: Helvetica, Arial, sans-serif;
+        left: 0;
+        margin: 10px;
+        padding: 10px;
+        position: absolute;
+        top: 0;
+      }
+
+      #hh h1 {
+        margin: 0;
+      }
+
+      #hh h2 {
+        font-weight: 200;
+        margin: 10px 0;
+      }
+
+      #hh[data-enabled="false"] section {
+        display: none;
+      }
+
+      #hh section {
+        margin: 20px 0;
+      }
+
+      #hh .hh-check,
+      #hh .hh-tip {
+        display: block;
+        font-size: .75rem;
+        margin: 8px 0;
+      }
+
+      #hh .hh-tip {
+        color: rgb(148,148,148);
+      }
+
+      #hh input[type="text"] {
+        border: none;
+        background: rgb(108,108,108);
+        color: #fff;
+        padding: 5px;
+      }
+
+      #hh input[type="button"] {
+        background: #fff;
+        border: none;
+        padding: 5px;
+      }
+
+      #hh input[type="button"]:active {
+        background: rgb(47,77,135);
+        color: #fff;
+      }
+    </style>
+
+    <h1 id="hh-heading" class="hh-heading">hotspot-helper</h1>
+
+    <span class="hh-check">
+      <label>
+        <input id="hh-enabled" type="checkbox" checked> Enabled
+      </label>
+    </span>
+
+    <section>
+      <label>
+        <input id="hh-distance" size="5" type="text"> Hotspot distance
+        <span class="hh-tip">Use mouse scroll to adjust distance</span>
+      </label>
+    </section>
+
+    <section>
+      <label>
+        <h2>Position</h2>
+        <input id="hh-position" size="20" type="text" value="1.000 1.000 1.000">
+        <input id="hh-copy-position" type="button" value="Copy to Position">
+      </label>
+    </section>
+
+    <section>
+      <h2><label for="hh-rotation">Rotation</label></h2>
+      <input id="hh-rotation" size="20" type="text" value="1.000 1.000 1.000">
+      <input id="hh-copy-rotation" type="button" value="Copy to Rotation">
+      <label>
+        <span class="hh-check">
+          <input id="hh-lookat" type="checkbox"> Look at origin
+        </span>
+      </label>
+    </section>
     `;
     uiContainer.innerHTML = markup;
     return uiContainer;
