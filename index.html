@@ -201,7 +201,8 @@ crossorigin="anonymous"
 playsinline
 webkit-playsinline
 loop
-autoplay>
+autoplay 
+muted>
 <source src="./videos/Platzhalter.mov" type="video/mp4;codecs=hvc1">
 <source src="./videos/flag_animation.webm" type="video/webm" />
 </video>
@@ -2624,10 +2625,11 @@ var inactivityDelay = 120000; // 10 Sekunden bis zum Countdown-Start
         };
 
   
-      
-
-     
-
+    // Warte auf das 'enter-vr' Event, um das Video abzuspielen
+    document.querySelector('a-scene').addEventListener('enter-vr', function () {
+    var video = document.querySelector('#Flagge');
+    video.play();  // Spiele das Video ab, sobald der Benutzer in den VR-Modus wechselt
+  });
 
 
       </script>
