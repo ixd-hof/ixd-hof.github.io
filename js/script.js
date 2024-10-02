@@ -21,9 +21,13 @@ document.addEventListener('DOMContentLoaded', function () {
   
     var trigger9 = document.querySelector('#trigger9');
   var trigger11 = document.querySelector('#trigger11');
+  var trigger11_1 = document.querySelector('#trigger11_1');
    var trigger12 = document.querySelector('#trigger12');
      var trigger13 = document.querySelector('#trigger13');
        var trigger14 = document.querySelector('#trigger14');
+
+       var trigger15_1 = document.querySelector('#trigger15_1');
+       var trigger15_2 = document.querySelector('#Part6');
   
      var trigger16 = document.querySelector('#trigger16');
    var trigger17 = document.querySelector('#trigger17');
@@ -71,6 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
    var portrait18 = document.querySelector('#portrait18');
    var portrait19 = document.querySelector('#portrait19');
   var Glaslied = document.querySelector('#Glaslied_subs');
+  var Flagge2 = document.querySelector('#Flagge_Animation');
+  
   
 
 
@@ -182,7 +188,7 @@ stopVideo(portrait2, sub2);
   });
   
     trigger7.addEventListener('click', function () {
-    startVideosWithDelay(portrait6, sub6);
+    startVideosWithDelay(portrait6, sub6, Flagge2);
       stopVideo(portrait5, sub5);
 
   });
@@ -202,6 +208,12 @@ stopVideo(portrait2, sub2);
          stopVideo(portrait7, sub7);
 
   });
+
+  trigger11_1.addEventListener('click', function () {
+    startVideosWithDelay(portrait7, sub7);
+       stopVideo(portrait8, sub8);
+
+});
   
   trigger12.addEventListener('click', function () {
       startVideosWithDelay(portrait9, sub9);
@@ -219,6 +231,16 @@ stopVideo(portrait2, sub2);
          stopVideo(portrait11, sub11);
 
   });
+
+  trigger15_1.addEventListener('click', function () {
+    startVideosWithDelay(portrait9, sub9);
+    stopVideo(portrait11, sub11);
+});
+
+trigger15_2.addEventListener('click', function () {
+  startVideosWithDelay(portrait8, sub8);
+  stopVideo(portrait9, sub9);
+});
   
       trigger16.addEventListener('click', function () {
           startVideosWithDelay(portrait12, sub12);
@@ -278,8 +300,8 @@ stopVideo(portrait12, sub12);
   });
   
      trigger28.addEventListener('click', function () {
-      startVideosWithDelay(portrait14, sub14);
-       stopVideo(portrait15, sub15);
+      startVideosWithDelay(portrait14, sub15);
+       stopVideo(portrait15, sub16);
   });
   
      trigger29.addEventListener('click', function () {
