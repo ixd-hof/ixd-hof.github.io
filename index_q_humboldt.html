@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>VR - Stollen</title>
+        <link rel="stylesheet" href="./style.css">
+
+    
+    <script src="./js_humboldt/aframe.min.js"></script>
+
+    
+   <script src="panorama/helper.js"></script>
+    <script src="panorama/hotspot.js"></script>
+    <script src="panorama/panorama.js"></script>
+    <script src="panorama/tour.js"></script>
+    <script src="./js_humboldt/script.js"></script>
+    <script src="./transparent-video-shader.js"></script>
+    <script src="./event-set-component.js"></script>
+    <script src="./billboard-look-component.js"></script>
+
+    
+</head>
+  
+  <body>
+
+    
+    
+    <a-scene obb-collider="showColliders: false" cursor="rayOrigin: mouse" renderer="antialias: true;
+                   colorManagement: true;
+                   physicallyCorrectLights: true;" loading-screen="dotsColor: white; backgroundColor: #A4BC49">
+
+       <!-- Preload assets like panoramas and content -->
+      <a-assets timeout="10000">
+        
+
+<!-- Humboldt_subs_1 -->
+<video id="Humboldt_subs_1"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline
+muted>
+<!-- HEVC video for safari support -->
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<!-- WEBM video for chrome and firefox -->
+<source src="./videos_humboldt/Humboldt_subs_1.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_subs_2 -->
+<video id="Humboldt_subs_2"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline
+muted>
+<!-- HEVC video for safari support -->
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<!-- WEBM video for chrome and firefox -->
+<source src="./videos_humboldt/Humboldt_subs_2.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_subs_3 -->
+<video id="Humboldt_subs_3"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline
+muted>
+<!-- HEVC video for safari support -->
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<!-- WEBM video for chrome and firefox -->
+<source src="./videos_humboldt/Humboldt_subs_3.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_subs_4 -->
+<video id="Humboldt_subs_4"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline
+muted>
+<!-- HEVC video for safari support -->
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<!-- WEBM video for chrome and firefox -->
+<source src="./videos_humboldt/Humboldt_subs_4.webm" type="video/webm" />
+</video>
+
+
+
+          
+        
+        
+    <!-- Animierte KI Portraets -->
+
+        <img id="Portrait_shadown" src="./img_humboldt/Schatten.png" crossorigin="anonymous">
+
+        
+         <video
+          id="Humboldt_speaking_1"
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline
+                >
+          <!-- HEVC video for safari support -->
+          <source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos_humboldt/Humboldt_speaking_1.webm" type="video/webm" />
+        </video>
+        
+            <video
+          id="Humboldt_speaking_2"
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos_humboldt/Humboldt_speaking_2.webm" type="video/webm" />
+        </video>
+        
+            <video
+          id="Humboldt_speaking_3"
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos_humboldt/Humboldt_speaking_3.webm" type="video/webm" />
+        </video>
+        
+            <video
+          id="Humboldt_speaking_4"
+          crossorigin="anonymous"
+          playsinline
+          webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos_humboldt/Humboldt_speaking_4.webm" type="video/webm" />
+        </video>
+        
+        
+
+        
+        <!-- Humboldt_speaking_1 -->
+<video
+id="Humboldt_speaking_1"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline>
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<source src="./videos_humboldt/Humboldt_speaking_1.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_speaking_2 -->
+<video
+id="Humboldt_speaking_2"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline>
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<source src="./videos_humboldt/Humboldt_speaking_2.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_speaking_3 -->
+<video
+id="Humboldt_speaking_3"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline>
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<source src="./videos_humboldt/Humboldt_speaking_3.webm" type="video/webm" />
+</video>
+
+<!-- Humboldt_speaking_4 -->
+<video
+id="Humboldt_speaking_4"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline>
+<source src="./videos_humboldt/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+<source src="./videos_humboldt/Humboldt_speaking_4.webm" type="video/webm" />
+</video>
+ 
+<img id="Hinweis" src="./img_humboldt/Hinweis_Stollen.png" crossorigin="anonymous">
+
+<img id="Erklaerung" src="./img_humboldt/Erklaerung.png" crossorigin="anonymous">
+<img id="Erklaerung_2" src="./img_humboldt/Erklaerung_2.png" crossorigin="anonymous">
+
+<img id="ueberspringen" src="./img_humboldt/ueberspringen.png" crossorigin="anonymous">
+        
+        <!-- 3D Modelle -->
+        <a-asset-item id="Stollen_Außen_Modell" src="./models_humboldt/Eingang_Stollen_Humboldt.glb" crossorigin="anonymous"></a-asset-item>
+        <a-asset-item id="Stollen_Innen_Modell" src="./models_humboldt/Stollen_2_Tunnel_Humboldt.glb" crossorigin="anonymous"></a-asset-item>
+        <a-asset-item id="Stollen_Muenze_Modell" src="./models_humboldt/Stollen_Muenze_Modell.glb" crossorigin="anonymous"></a-asset-item>
+        <a-asset-item id="Dukate" src="./models_humboldt/Golddukat.glb" crossorigin="anonymous"></a-asset-item>
+        <a-asset-item id="Stollen_Mittelpart" src="./models_humboldt/Stollen_Mittelpart.glb" crossorigin="anonymous"></a-asset-item>
+      
+                <!-- Infotexte -->
+        <img id="Infotext1" src="./img_humboldt/Info_Zeche.png" crossorigin="anonymous">
+<img id="Infotext3" src="./img_humboldt/Infotafel_Lichterhalter.png" crossorigin="anonymous">
+<img id="Infotext2" src="./img_humboldt/Info_dukate.png" crossorigin="anonymous">
+
+<img id="background" src="./img_humboldt/Stollen.jpg" crossorigin="anonymous">
+
+
+<img id="Weiter" src="./img_humboldt/Link_Icon.png" crossorigin="anonymous">
+
+      </a-assets>
+      
+      
+     
+      <a-tour>
+        
+        <!-- Szene 1 -->
+        <a-panorama id="Stollen_Eingang" src="#background" position="0 0 1" rotation="0 0 0">
+        
+   <a-entity >
+         <a-entity  gltf-model="#Stollen_Außen_Modell" scale="1.5 1.5 1.5" position="0 -0.64 -5" shadow="cast: true">
+          </a-entity> 
+                  
+            
+          <a-image shadow="cast: true" id="Infotafel1" src="#Infotext1" material.transparent="true" alphatest= "0.5;"
+                 width="1" height="1" opacity="1" scale="1.4 1.4 1" position="1.2 1.493 -2.591" rotation="0 -20 0" ></a-image>
+          
+           <a-plane id="Nutzerhinweis" shadow="cast: true" src="#Erklaerung"  alphatest= "0.5;" material="alphaTest:0.5;"
+                 width="1" height="0.7807" opacity="1" scale="1.5 1.5 .8" position="0 1.5 -2.506" rotation="0 0 0">
+      <a-plane id="skip" class="clickable" shadow="cast: true" src="#ueberspringen"  alphatest= "0.5;" material="alphaTest:0.5;"
+                 width="1" height="0.2676" opacity="1" scale="0.300 0.300 0.300" position="0.295 -0.3 0.01" rotation="0 0 0"
+                event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"
+                    ></a-plane>
+     
+                    </a-plane>
+     
+    
+          
+           
+          <a-image shadow="cast: true" billboard id="" src="#Erklaerung_2" material.transparent="true" alphatest= "0.5;" 
+                 width="1" height="0.3844" opacity="1" scale="1.5 1.5 1.5" position="0 1.5 0.6" rotation="0 90 0" ></a-image>
+          
+          
+        
+        
+        <a-entity id="Portraet_1" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_1; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+        position="-0.366 0.802 -3.1"
+                  shadow="cast: true"> </a-entity>  
+           
+           <a-image src="#Portrait_shadown" rotation="90 0 0" position="-0.398 -0.167 -3.259" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+          
+          
+         <!--     <a-entity id="trigger1" class="clickable"
+              position="-0.354 1.171 -3.059"
+              scale=".2 .2 .2">
+              <a-image class="clickable" src="#play" material.transparent="true" alphatest= "0.5;" 
+                 width="1" height="1" opacity="1" 
+                event-set__enter_hover="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__leave_click="_event: click; opacity: 0; delay:2000;"
+                
+      ></a-image>
+              </a-entity>
+     -->
+     </a-entity>
+          
+        </a-panorama>
+        
+           <!-- Szene 2-->
+        <a-panorama id="Stollen_Innen" src="#background" visible="false" >
+
+          <a-entity position="0 -0.433 -1" > 
+           <a-entity gltf-model="#Stollen_Innen_Modell" scale="1.2 1.2 1.2" position="0 -0.1 -1"
+                     shadow="cast: true">
+          </a-entity>
+          
+            
+
+ <a-image id="Infotafel3" src="#Infotext3" material.transparent="true" alphatest= "0.5;"
+                 width="1" height="1" opacity="1" scale="1 1 1" position="0.535 2.108 -4.352" rotation="0 -85 0" ></a-image>
+          
+       
+          
+           <a-entity  id="hotspot3" class="clickable" color="#FFAA00" scale=".4 .4 .4" position="0.28 1.3 -6.526" rotation="0 0 0"
+              event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.18 -13.658 animation.easing: easeInOutQuad; animation.dur: 0.1;">
+        <a-image id="trigger3" src="#Weiter" material.transparent="true" width="0.5" height="0.5" class="clickable" scale=".75 .75 .75"
+                  event-set__opacity="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 1;"
+                  event-set__opacity_2="_target: #hotspot_text3; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 5000;"
+                 event-set__opacity_3="_target: #Portraet_2; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 1000;"
+                event-set__opacity_5="_target: #hotspot4; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 10000;"
+                 event-set__opacity_6="_target: #Part5; _event: click; animation.property: position; animation.to: -0.097 5 -3 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+                  event-set__opacity_8="_target: #Portraet_3; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                  event-set__opacity_9="_target: #Part3; _event: click; animation.property: position; animation.to: -0.142 0.622 -15.903 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                 event-set__opacity_7="_target: #Part6; _event: click; animation.property: position; animation.to: -0.097 1.3 -10 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+
+                 
+                 
+                 event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;">
+</a-image>
+    </a-entity>
+            
+            
+            
+               <a-entity id="Part6" class="clickable" position="-0.097 5 -10"  rotation="0 180 -45" 
+                            event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0.2 0.2 -5.192 animation.easing: easeInOutQuad; animation.dur: 0.0001;"
+                            event-set__opacity_2="_target: #Portraet_2; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 1500;"
+                            event-set__opacity_8="_target: #Portraet_3; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                 event-set__opacity_7="_target: #Part6; _event: click; animation.property: position; animation.to: -0.097 5 -10 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+                  event-set__opacity_9="_target: #Part3; _event: click; animation.property: position; animation.to: -0.142 5 -15.903 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                  event-set__opacity="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 1;"
+                 event-set__opacity_6="_target: #Part5; _event: click; animation.property: position; animation.to: 0.117 1 -3 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+
+>
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-entity>
+            
+           <!-- 
+            <a-  id="hotspot9" class="clickable" color="#FFAA00" scale=".4 .4 .4" position="-0.097 1 -5" rotation="0 0 0"
+              event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.18 -13.658 animation.easing: easeInOutQuad; animation.dur: 0.1;">
+        <a-image id="trigger9" src="#Weiter" material.transparent="true" width="0.5" height="0.5" class="clickable" scale=".75 .75 .75"
+
+                 
+                 event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;">
+</a-image>
+    </a-entity>
+          
+               
+            
+               <a-plane id="Portraet_2"  position="0.059 1.418 -6.543" rotation="0 0 0" width="0.870" height="2.2" opacity="0" scale="1 1 1"
+                   material="src:#Portraet; alphaTest: 0.5;"></a-plane>
+                  
+            <a-plane id="Portraet_3"  position="-0.332 1.223 -14.908" rotation="0 0 0" width="0.870" height="2.2" opacity="0" scale="1 1 1"
+                   material="src:#Portraet; alphaTest: 0.5;"></a-plane>
+        -->          
+        
+           <a-entity id="Portraet_2" opacity="0"
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_2; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                 
+        position="0.059 1.437 -6.543"> </a-entity> 
+                       <a-image src="#Portrait_shadown" rotation="100 0 0" position="0.004 0.398 -6.674" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+
+            
+        
+            
+            
+             <a-entity id="Portraet_3" scale="0 0 0"
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_3; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+        position="-0.332 1.237 -14.908"> </a-entity> 
+            
+         <a-image src="#Portrait_shadown" rotation="90 0 0" position="-0.436 0.201 -14.988" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+            
+        
+          
+          </a-entity>
+        </a-panorama>
+        
+          <a-panorama id="Stollen_Mitte" src="#background" visible="false" >
+
+         
+           <a-entity shadow="cast: true" gltf-model="#Stollen_Mittelpart" scale="1.2 1.2 1.2" rotation="0 180 0" position="0.937 1.384 -17.513"> </a-entity>
+       
+       
+                  <a-entity id="Portraet_4" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_4; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+
+        position="-0.320 1.115 -15.328"> </a-entity>  
+     <a-image src="#Portrait_shadown" rotation="100 0 0" position="-0.543 0.109 -15.601" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+ 
+        </a-panorama>
+      
+ 
+        
+        
+        
+        
+        <!-- Szene 4 -->
+          <a-panorama id="Stollen_Szene3" src="#" visible="false"  >
+          
+            
+       
+      
+            
+
+              <a-box grabbable id="muenze_animiert"
+                    position="-0.052 0.989 -0.563"
+                     rotation="0 0 10"
+                 scale=".3 .3 .3"
+                 opacity="0" 
+                  width="0.3" 
+                    depth="0.27" 
+                    height="0.04" 
+                     >
+            <a-entity id="muenze" gltf-model="#Dukate" scale="1 1 1" position="0.116 0 -0.046" rotation="0 0 0">
+          </a-entity>
+          </a-box>
+            
+
+             
+          <a-entity gltf-model="#Stollen_Muenze_Modell" scale="1.1 1.1 1.1" position="0 0.088 -0.747" rotation="0 0 0"> </a-entity>
+          <a-plane rotation="180 0 180" position="0.117 1.077 0.917" scale="2 4 4" color="#191917"></a-plane>
+      
+        <a-image billboard id="Infotafel2" src="#Infotext2" material.transparent="true" alphatest= "0.5;"
+             width="1" height="1" opacity="1" scale=".5 .5 .5" position=" -0.536 1.200 -0.258" rotation="0 -20 0" ></a-image>
+          <a-image billboard src="#Hinweis" scale="0.2 0.2 0.2" rotation="0 90 0" position=" 0.269 1.2 -0.346" material.transparent="true" width="1.5" height=".75"
+              ></a-image>
+      
+          
+        </a-panorama>
+        
+        <a-box  id="Ladebox" position="0 0 -20" scale="0 0 0" material="metalness:1; side: double;" color="black">
+             <a-text value="...loading" position="0 0.061 -0.247" scale=".4 .4 .4" color="white"></a-text>
+        </a-box>
+       
+        
+        <a-hotspot cursor-listener id="Part2" scale="1 1 1"  class="clickable" for="Stollen_Eingang" to="Stollen_Innen" position="-0.109 0.093 -3.942" rotation="0 0 0" 
+                  event-set__enter_start="_target: #Part5; _event: click; animation.property: position; animation.to: 0.117 1 -3 animation.easing: easeInOutQuad; animation.dur: 0.0001;"
+
+                   event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0.2 0.2 -5.192 animation.easing: easeInOutQuad; animation.dur: 0.0001;"
+                   event-set__opacity_2="_target: #Portraet_2; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 1500;"
+                    event-set__opacity_5="_target: #hotspot3; _event: click; animation.property: scale; animation.to: .75 .75 .75 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                  animation__mouseenter="startEvents: mouseenter; property: opacity; to: 0.5; dur: .1; loop: true"
+                  event-set__opacity_7="_target: #Part2; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 15000;"
+                >
+          <a-image id="trigger2" class="clickable" src="#Weiter" material.transparent="true; alphaTest:0.5;"  width=".5" height=".5" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+             
+
+        <a-hotspot cursor-listener id="Mitte" scale=".75 .75 .75"  class="clickable" for="Stollen_Mitte" to="Stollen_Szene3" position="-0.13 1 -15.335" rotation="0 0 -45" visible="false"
+                   event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000000001;"
+                    event-set__scale_1="_target: #muenze_animiert; _event: click; animation.property: rotation; animation.to: 0 0 10 animation.easing: easeInOutQuad; animation.dur: 0.1; loop: false;"
+                    event-set__scale_2="_target: #Part2; _event: click; animation.property: position; animation.to: 0 5 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001; loop: false;">
+
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5"  scale=".75 .75 .75" 
+                 event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"
+            
+></a-image>
+        </a-hotspot>
+        
+        <a-hotspot id="trigger8" cursor-listener scale=".75 .75 .75"  class="clickable" for="Stollen_Mitte" to="Stollen_Innen" position="-0.262 1 -11.001" rotation="0 180 -45" visible="false"
+          event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.180 -12.968 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+          event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+         
+        
+        <a-hotspot id="Part3" class="clickable" for="Stollen_Innen" to="Stollen_Mitte" position="-0.113 5 -15.998" rotation="0 0 -45" visible="false"
+            event-set__enter="_target: #Mitte; _event: click; animation.property: scale; animation.to: 0.75 0.75 0.75 animation.easing: easeInOutQuad; animation.dur: 0.00001;" 
+            event-set__enter2="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.418 0.2 -13.770 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+            event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 20 20 20 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot> 
+        
+        
+           <a-hotspot cursor-listener billboard id="Part4" scale=".75 .75 .75" class="clickable" for="Stollen_Szene3" to="Stollen_Eingang" position="-0.625 1.2 0.329" rotation="0 -90 -45" visible="false"
+                event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+               event-set__enter2="_target: #muenze_animiert; _event: click; animation.property: position; animation.to: -0.052 0.989 -0.563 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+               event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+               event-set__scale_2="_target: #Part2; _event: click; animation.property: position; animation.to: -0.109 0.093 -3.942 animation.easing: easeInOutQuad; animation.dur: 0.0000001; loop: false;"
+               event-set__opacity_2="_target: #Portraet_3; _event: click; animation.property: scale; animation.to: 0 0 0  animation.easing: easeInOutQuad; animation.dur: 3000;"
+               event-set__opacity_9="_target: #Part3; _event: click; animation.property: position; animation.to: -0.142 5 -15.903 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+               event-set__opacity_9="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+
+               >
+
+                       
+             
+          <a-image id="reset_Muenze" class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".5 .5 .5" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+        
+        <a-hotspot id="Part5" class="clickable" for="Stollen_Innen" to="Stollen_Eingang" position="0.117 5 -3" rotation="0 180 -45" visible="false"
+                    event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to:0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.001;" 
+                    event-set__opacity_2="_target: #Portraet_3; _event: click; animation.property: scale; animation.to: 0 0 0  animation.easing: easeInOutQuad; animation.dur: 3000;"
+                  event-set__opacity_6="_target: #hotspot_text4; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 15000;"
+                   event-set__opacity_9="_target: #Part5; _event: click; animation.property: position; animation.to: -0.097 1 -3 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                   event-set__opacity_11="_target: #Part3; _event: click; animation.property: position; animation.to: 0 5 0 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                    event-set__opacity_7="_target: #Part2; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                   event-set__scale_2="_target: #Part2; _event: click; animation.property: position; animation.to: -0.109 0.093 -3.942 animation.easing: easeInOutQuad; animation.dur: 0.0000001; loop: false;">
+
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+        
+        
+     
+        
+      </a-tour>
+
+               <a-entity
+        light="type:directional; castShadow:true; intensity:1.6"
+        position="1 1 1"
+      ></a-entity>
+      
+
+
+      <a-light type="ambient" intensity="2"> </a-light>
+  
+     
+      
+     <a-entity id="cameraRig" position="0 0 0" rotation=" 0 0 0" wasd-controls="false">  
+       
+        
+      
+        <a-entity  id="leftHand" hand-tracking-grab-controls="hand: left;"></a-entity>
+        <a-entity  id="rightHand" hand-tracking-grab-controls="hand: right;"></a-entity>
+      
+       
+      <a-camera id="camera" camera look-controls wasd-controls="false" position="0 1.5 0" fov="80" >
+        
+        <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">         </a-entity>
+         
+        <a-entity 
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+          cursor="fuse: true; maxDistance: 800;"
+          material="color: #C8C8C8; shader: flat"
+          position="0 0 -.5"
+          geometry="primitive: ring; radiusInner: 0.006; radiusOuter: 0.01;"
+          raycaster="objects: .clickable "></a-entity>
+
+         <a-entity id="subs_1" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_subs_1; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                  scale=".5 .5 .5"
+                  position="0 -0.3 -1.5"
+                  shadow="cast: true"> </a-entity>
+        
+        <a-entity id="subs_2" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_subs_2; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                  scale=".5 .5 .5"
+                  position="0 -0.3 -1.5"
+                  shadow="cast: true"> </a-entity>
+        
+        <a-entity id="subs_3" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_subs_3; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                  scale=".5 .5 .5"
+                  position="0 -0.3 -1.5"
+                  shadow="cast: true"> </a-entity>
+        
+        <a-entity id="subs_4" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_subs_4; transparent:true;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                  scale=".5 .5 .5"
+                  position="0 -0.3 -1.5"
+                  shadow="cast: true"> </a-entity>
+     
+        
+        
+      </a-camera>
+      
+      </a-entity>
+  
+    </a-scene>
+    
+
+  
+  </body>
+</html>
