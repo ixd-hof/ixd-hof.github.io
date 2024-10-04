@@ -1,0 +1,68 @@
+.hidden {
+    display: none; /* Versteckt das Element */
+}
+
+.visible {
+    display: block; /* Zeigt das Element an */
+}
+
+
+.video-container {
+    position: fixed; /* Fixiert den Container relativ zum Viewport */
+    top: 30%; /* Setzt den Container am unteren Rand des Viewports */
+    left: 10%;
+    right: 10%;
+  /* Positioniert den Container am linken Rand des Viewports */
+    width: 80vw; /* Volle Breite des Viewports */
+    height: auto; /* Höhe automatisch anpassen, um das Video anzupassen */
+    z-index: 2; /* Stellt sicher, dass der Container über anderen Elementen liegt */
+    display: flex; /* Verwendet Flexbox für die Ausrichtung des Videos */
+    justify-content: center; /* Zentriert das Video horizontal */
+    align-items: center; /* Zentriert das Video vertikal */
+    pointer-events: none; /* Verhindert, dass der Container Mausklicks abfängt */
+    overflow: hidden; /* Verhindert, dass Überlauf-Content angezeigt wird */
+}
+
+video {
+    width: 100%; /* Setzt die Breite des Videos auf die Breite des Containers */
+    height: auto; /* Beibehaltung des Seitenverhältnisses des Videos */
+
+}
+
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Sicherstellen, dass es über der A-Frame-Szene liegt */
+}
+
+#hinweis-container {
+  position: relative;
+  text-align: center;
+}
+
+#nutzerhinweis {
+  width: 50%; /* Bildgröße anpassen */
+}
+
+#start-button {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Zentriert das Bild horizontal und vertikal */
+  cursor: pointer;
+  width: 18%; /* Bildgröße anpassen */
+  transition: opacity 0.3s ease; /* Weicher Übergang für die Opacity */
+  opacity: 1; /* Anfangs volle Opazität */
+}
+
+#start-button:hover {
+  opacity: 0.75; /* Reduzierte Opazität bei Hover */
+}
