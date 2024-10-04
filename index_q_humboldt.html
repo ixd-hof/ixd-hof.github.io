@@ -269,7 +269,7 @@ webkit-playsinline>
            <!-- Szene 2-->
         <a-panorama id="Stollen_Innen" src="#background" visible="false" >
 
-          <a-entity position="0 -0.375 -1" > 
+          <a-entity position="0 -0.360 -1" > 
            <a-entity gltf-model="#Stollen_Innen_Modell" scale="1.2 1.2 1.2" position="0 -0.1 -1"
                      shadow="cast: true">
           </a-entity>
@@ -466,7 +466,7 @@ webkit-playsinline>
         
         <a-hotspot id="Part3" class="clickable" for="Stollen_Innen" to="Stollen_Mitte" position="-0.113 5 -15.998" rotation="0 0 -45" visible="false"
             event-set__enter="_target: #Mitte; _event: click; animation.property: scale; animation.to: 0.75 0.75 0.75 animation.easing: easeInOutQuad; animation.dur: 0.00001;" 
-            event-set__enter2="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.418 0.2 -13.770 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+            event-set__enter2="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.418 0 -13 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
             event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 20 20 20 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
           <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
                    event-set__enter_hover="_event: mouseleave; opacity: 1;"
