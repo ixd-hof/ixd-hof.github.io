@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title> Alexander von Humboldt - Stollen</title>
+   <link rel="stylesheet" type="text/css" href="./style_humboldt.css">
+
+    
+    <script src="js/aframe.min.js"></script>
+
+
+    <script src="js/aframe.extras.js"></script>
+    
+    <script src="panorama/helper.js"></script>
+    <script src="panorama/hotspot.js"></script>
+    <script src="panorama/panorama.js"></script>
+    <script src="panorama/tour.js"></script>
+    
+    <script src="js/script.js"></script>
+
+    
+     <script src="js/transparent-video-shader.js"></script>
+
+    <script src="js/event-set-component.js"></script>
+    <script src="js/billboard-look-component.js"></script>
+    
+</head>
+  
+<div id="overlay">
+  <div id="hinweis-container">
+    <img id="nutzerhinweis" src="./img/Nutzerhinweis_Tablet.png" alt="Nutzerhinweis">
+    <img id="start-button" src="./img/Starten.png" alt="Jetzt Starten" onclick="hideOverlay()">
+  </div>
+</div>
+
+<div class="switcher-nav">
+  <a href="index.html" class="go-to-index-button" id="indexButton">
+    Home
+  </a>    
+  <div class="switcher-nav-inner">
+      <a href="goethe.html" class="arrow left-arrow">←</a>
+      <div class="footer-text">Alexander von Humboldt</div>
+      <a href="luise.html" class="arrow right-arrow">→</a>
+  </div>
+</div>
+
+  <body>
+
+
+        <div class="video-container">
+          <video id="Humboldt_subs_1" crossorigin="anonymous" playsinline webkit-playsinline muted>
+            <!-- HEVC video for safari support -->
+            <source src="./videos/Humboldt_subs_1-1.mov" type="video/mp4;codecs=hvc1">
+            <!-- WEBM video for chrome and firefox -->
+            <source src="./videos/Humboldt_subs_1.webm" type="video/webm">
+        </video>  
+        
+        <video id="Humboldt_subs_2" crossorigin="anonymous" playsinline webkit-playsinline muted>
+            <!-- HEVC video for safari support -->
+            <source src="./videos/Humboldt_subs_2-1.mov" type="video/mp4;codecs=hvc1">
+            <!-- WEBM video for chrome and firefox -->
+            <source src="./videos/Humboldt_subs_2.webm" type="video/webm">
+        </video>  
+        
+        <video id="Humboldt_subs_3" crossorigin="anonymous" playsinline webkit-playsinline muted>
+            <!-- HEVC video for safari support -->
+            <source src="./videos/Humboldt_subs_3-1.mov" type="video/mp4;codecs=hvc1">
+            <!-- WEBM video for chrome and firefox -->
+            <source src="./videos/Humboldt_subs_3.webm" type="video/webm">
+        </video>  
+        
+        <video id="Humboldt_subs_4" crossorigin="anonymous" playsinline webkit-playsinline muted>
+            <!-- HEVC video for safari support -->
+            <source src="./videos/Humboldt_subs_4-1.mov" type="video/mp4;codecs=hvc1">
+            <!-- WEBM video for chrome and firefox -->
+            <source src="./videos/Humboldt_subs_4.webm" type="video/webm">
+        </video>  
+     
+    </div>
+    
+    
+    
+    <a-scene obb-collider="showColliders: false" cursor="rayOrigin: mouse" renderer="antialias: true;
+                   colorManagement: true; 
+                   physicallyCorrectLights: true;" loading-screen="dotsColor: white; backgroundColor: #A4BC49"
+                   xr-mode-ui="enabled: false">
+
+       <!-- Preload assets like panoramas and content -->
+      <a-assets timeout="10000">
+         <!-- Panoramen -->
+    <img id="background" src="./img/Stollen.jpg" crossorigin="anonymous">
+    
+    <!-- User Interface/Buttons -->
+    <img id="Weiter" src="./img/Back_Forth_UI_2.png" crossorigin="anonymous">
+    <img id="play" src="./img/Play_Icon.png" crossorigin="anonymous">
+
+    <img id="Infotext1" src="./img/Info_Zeche.png" crossorigin="anonymous">
+    <img id="Infotext2" src="./img/Info_dukate.png" crossorigin="anonymous">
+    <img id="Infotext3" src="./img/Infotafel_Lichterhalter.png" crossorigin="anonymous">
+
+    <img id="Erklaerung" src="./img/Nutzerhinweis_Tablet.png" crossorigin="anonymous">
+    <img id="Erklaerung_2" src="./img/Umdrehenbitte.png" crossorigin="anonymous">
+    <img id="Hinweis" src="./img/Hinweis.png" crossorigin="anonymous">
+    
+    <!-- Animierte KI Porträts -->
+    <img id="Portrait_shadown" src="./img/Schatten.png" crossorigin="anonymous">
+    
+    <!-- Videos -->
+    <video id="Humboldt_speaking_1" crossorigin="anonymous" playsinline webkit-playsinline>
+      <source src="./videos/Humboldt_Speaking_1-1.mov" type="video/mp4;codecs=hvc1">
+      <source src="./videos/Humboldt_Speaking_1.webm" type="video/webm">
+  </video>
+
+  <video id="Humboldt_speaking_2" crossorigin="anonymous" playsinline webkit-playsinline>
+      <source src="./videos/Humboldt_Speaking_2-1.mov" type="video/mp4;codecs=hvc1">
+      <source src="./videos/Humboldt_Speaking_2.webm" type="video/webm">
+  </video>
+
+  <video id="Humboldt_speaking_3" crossorigin="anonymous" playsinline webkit-playsinline>
+      <source src="./videos/Humboldt_Speaking_3-1.mov" type="video/mp4;codecs=hvc1">
+      <source src="./videos/Humboldt_Speaking_3.webm" type="video/webm">
+  </video>
+
+  <video id="Humboldt_speaking_4" crossorigin="anonymous" playsinline webkit-playsinline>
+      <source src="./videos/Humboldt_Speaking_4-1.mov" type="video/mp4;codecs=hvc1">
+      <source src="./videos/Humboldt_Speaking_4.webm" type="video/webm">
+  </video>
+
+  <video id="Platzhalter" crossorigin="anonymous" playsinline webkit-playsinline muted>
+      <source src="./videos/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+      <source src="./videos/Platzhalter.webm" type="video/webm">
+  </video>
+
+    <img id="Humboldt_speaking_1_poster" src="./img/Poster_Humboldt.png" crossorigin="anonymous">
+
+    <!-- 3D Modelle -->
+    <a-asset-item id="Stollen_Außen_Modell" src="./models/Eingang_Stollen_Humboldt.glb" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="Stollen_Innen_Modell" src="./models/Stollen_2_Tunnel_Humboldt.glb" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="Stollen_Münze_Modell" src="./models/Stollen_Muenze_Modell.glb" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="Dukate" src="./models/Golddukat.glb" crossorigin="anonymous"></a-asset-item>
+    <a-asset-item id="Stollen_Mittelpart" src="./models/Stollen_Mittelpart.glb"
+     crossorigin="anonymous"></a-asset-item> 
+
+
+      </a-assets>
+      
+      
+     
+      <a-tour>
+        
+        <!-- Szene 1 -->
+        <a-panorama id="Stollen_Eingang" src="#background" position="0 0 1" rotation="0 0 0">
+        
+   <a-entity >
+         <a-entity  gltf-model="#Stollen_Außen_Modell" scale="1.5 1.5 1.5" position="0 -0.64 -5" shadow="cast: true">
+          </a-entity> 
+                  
+            
+          <a-image shadow="cast: true" id="Infotafel1" src="#Infotext1" material.transparent="true" alphatest= "0.5;"
+          width="1" height="1" opacity="1" scale="1.6 1.6 1.6" position="1.2 1.493 -2.591" rotation="0 -20 0" ></a-image>
+   
+   
+    
+          
+           
+          <a-image shadow="cast: true" billboard id="" src="#Erklaerung_2" material.transparent="true" alphatest= "0.5;" 
+                 width="1" height="0.42" opacity="1" scale="1.5 1.5 1.5" position="0 1.5 0.6" rotation="0 90 0" ></a-image>
+          
+          
+        
+        
+        <a-entity id="video1" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_1; transparent:true; depthWrite:false;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+        position="-0.366 0.802 -3.1"
+                  shadow="cast: true"> </a-entity>  
+           
+           <a-image src="#Portrait_shadown" rotation="90 0 0" position="-0.398 -0.167 -3.259" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+          
+      <a-entity id="video1_poster" 
+        material="src: #Humboldt_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                  
+        position="-0.366 0.802 -3.1"> </a-entity>
+          
+         
+     </a-entity>
+          
+        </a-panorama>
+        
+           <!-- Szene 2-->
+        <a-panorama id="Stollen_Innen" src="#background" visible="false" >
+
+          <a-entity position="0 -0.433 -1" > 
+           <a-entity gltf-model="#Stollen_Innen_Modell" scale="1.2 1.2 1.2" position="0 -0.1 -1"
+                     shadow="cast: true">
+          </a-entity>
+          
+            
+
+            
+          <a-image id="Infotafel3" src="#Infotext3" material.transparent="true" alphatest= "0.5;"
+          width="1" height="1" opacity="1" scale="1 1 1"  position="0.535 2.194 -4.076" rotation="0 -85 0" ></a-image>
+   
+       
+          
+           <a-entity  id="hotspot3" class="clickable" color="#FFAA00" scale="1 1 1" position="0.28 1.3 -6.526" rotation="0 0 0"
+              event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.18 -13.658 animation.easing: easeInOutQuad; animation.dur: 0.1;">
+        <a-image id="trigger3" src="#Weiter" material.transparent="true" width="0.5" height="0.5" class="clickable" scale=".75 .75 .75"
+                  event-set__opacity="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 1;"
+                  event-set__opacity_2="_target: #hotspot_text3; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 5000;"
+                 event-set__opacity_3="_target: #Porträt_2; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 1000;"
+                event-set__opacity_5="_target: #hotspot4; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 10000;"
+                 event-set__opacity_6="_target: #Part5; _event: click; animation.property: position; animation.to: -0.097 5 -4.713 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+                  event-set__opacity_8="_target: #Porträt_3; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                  event-set__opacity_9="_target: #Part3; _event: click; animation.property: position; animation.to: -0.115 0.844 -15.265 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                 event-set__opacity_7="_target: #Part6; _event: click; animation.property: position; animation.to: -0.097 1.3 -10 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+
+                 
+                 
+                 event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;">
+</a-image>
+    </a-entity>
+            
+            
+            
+               <a-entity id="Part6" class="clickable" position="-0.097 5 -9.5"  rotation="0 180 -45" 
+                            event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0.2 0.2 -5.192 animation.easing: easeInOutQuad; animation.dur: 0.0001;"
+                            event-set__opacity_2="_target: #Porträt_2; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 1500;"
+                            event-set__opacity_8="_target: #Porträt_3; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                 event-set__opacity_7="_target: #Part6; _event: click; animation.property: position; animation.to: -0.097 5 -10 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+                  event-set__opacity_9="_target: #Part3; _event: click; animation.property: position; animation.to: -0.115 5 -15.265 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+                  event-set__opacity="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 1;"
+                 event-set__opacity_6="_target: #Part5; _event: click; animation.property: position; animation.to: 0.117 1 -3.363 animation.easing: easeInOutQuad; animation.dur: 0.001;;"
+
+>
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale="1 1 1" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-entity>
+       
+        
+           <a-entity id="Porträt_2" opacity="0"
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_2; transparent:true; depthWrite:false;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+                 
+        position="0.059 1.437 -6.543"> </a-entity> 
+                       <a-image src="#Portrait_shadown" rotation="100 0 0" position="0.004 0.398 -6.674" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+
+            
+        
+            
+            
+             <a-entity id="Porträt_3" scale="0 0 0"
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_3; transparent:true; depthWrite:false;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+        position="-0.332 1.237 -14.908"> </a-entity> 
+            
+         <a-image src="#Portrait_shadown" rotation="90 0 0" position="-0.436 0.201 -14.988" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+            
+        
+          
+          </a-entity>
+        </a-panorama>
+        
+          <a-panorama id="Stollen_Mitte" src="#background" visible="false" >
+
+         
+           <a-entity shadow="cast: true" gltf-model="#Stollen_Mittelpart" scale="1.2 1.2 1.2" rotation="0 180 0" position="0.937 1.384 -17.513"> </a-entity>
+       
+       
+                  <a-entity id="video4" 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Humboldt_speaking_4; transparent:true; depthWrite:false;"
+        geometry="primitive: plane;
+                  width: 2.2;
+                  height: 2.2"
+
+        position="-0.320 1.115 -15.328"> </a-entity>  
+     <a-image src="#Portrait_shadown" rotation="100 0 0" position="-0.543 0.109 -15.601" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+ 
+        </a-panorama>
+      
+ 
+        
+        
+        
+        
+        <!-- Szene 4 -->
+          <a-panorama id="Stollen_Szene3" src="#" visible="false" >
+          
+              <a-entity 
+        material="shader: transparent-video; alphaTest: 0.5; src: #Platzhalter; transparent:true; depthWrite:false;"
+    > </a-entity>  
+         <a-entity
+            id="muenze_animiert" class="clickable"
+                   
+              animation-handler
+              animation__click1="startEvents: startAnimation; property: position; to: 0 1.35 -0.5; dur: 2000; loop: false; easing: easeInOutQuad"
+              animation__click2="startEvents: startAnimation; property: scale; to: .9 .9 .9; dur: 2000; loop: false; easing: easeInOutQuad"
+              animation__click3="startEvents: startAnimation; property: rotation; to: 75 4500 0; dur: 50000; loop: false; easing: easeInOutQuad"
+     
+
+
+                   
+    
+                 position="-0.052 0.989 -0.953"
+                rotation="75 0 0"
+                 scale=".3 .3 .3"
+                 opacity="0" 
+                  width="0.3" 
+                    depth="0.5" 
+                    height="0.15" 
+                     >
+            <a-entity id="muenze" gltf-model="#Dukate" scale="1 1 1"  position="0.116 0 -0.046" rotation="0 0 0">
+          </a-entity>
+          </a-entity>
+            
+
+              <a-entity gltf-model="#Stollen_Münze_Modell" scale="1.1 1.1 1.1" position="0 0.088 -1.164" rotation="0 0 0"> </a-entity>
+              <a-plane rotation="180 0 180" position="0.117 1.077 0.917" scale="2 4 4" color="#191917"></a-plane>
+            
+              <a-image billboard id="Infotafel2" src="#Infotext2" material.transparent="true" alphatest= "0.5;"
+              width="1" height="1" opacity="1" scale=".7 .7 .7" position="-0.55 1.4 -0.572" rotation="0 -20 0" ></a-image>
+           <a-image billboard src="#Hinweis" scale="0.2 0.2 0.2" rotation="0 90 0" position="0.269 1.427 -0.422" material.transparent="true" width="1.5" height=".75"
+                  ></a-image>
+          
+        </a-panorama>
+        
+        <a-box  id="Ladebox" position="0 0 -20" scale="0 0 0" material="metalness:1; side: double;" color="black">
+             <a-text value="...loading" position="0 0.061 -0.247" scale=".4 .4 .4" color="white"></a-text>
+        </a-box>
+       
+        
+        <a-hotspot id="Part2" scale="1 1 1"  class="clickable" for="Stollen_Eingang" to="Stollen_Innen" position="0 -5 0" rotation="0 0 0" 
+                   event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0.2 0.2 -5.192 animation.easing: easeInOutQuad; animation.dur: 0.0001;"
+                   event-set__opacity_2="_target: #Porträt_2; _event: click; animation.property: opacity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 1500;"
+                    event-set__opacity_5="_target: #hotspot3; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                  animation__mouseenter="startEvents: mouseenter; property: opacity; to: 0.5; dur: .1; loop: true"
+                  event-set__opacity_7="_target: #Part2; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 15000;"
+                >
+          <a-image class="clickable" src="#Weiter" material.transparent="true; alphaTest:0.5;"  width=".3" height=".3" rotation="-30 0 0"
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+             
+
+        <a-hotspot id="Mitte" scale=".75 .75 .75"  class="clickable" for="Stollen_Mitte" to="Stollen_Szene3" position="-0.13 1 -15" rotation="0 0 -45" visible="false"
+                   event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000000001;"
+                    event-set__scale_1="_target: #muenze_animiert; _event: click; animation.property: scale; animation.to: 0.3 0.3 0.3 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+
+                    event-set__scale_2="_target: #Part2; _event: click; animation.property: position; animation.to: 0 5 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001; loop: false;">
+
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5"  scale=".75 .75 .75" 
+                  event-set__scale_2="_target: #muenze_animiert; _event: touchstart; animation.property: rotation; animation.to: 75 0 0 animation.easing: easeInOutQuad; animation.dur: 0.1; loop: false;"
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"
+
+            
+></a-image>
+        </a-hotspot>
+        
+        <a-hotspot id="trigger8" cursor-listener scale=".75 .75 .75"  class="clickable" for="Stollen_Mitte" to="Stollen_Innen" position="-0.262 1 -11.001" rotation="0 180 -45" visible="false"
+          event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.180 -12.968 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+          event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+         
+        
+        <a-hotspot id="Part3" class="clickable" for="Stollen_Innen" to="Stollen_Mitte" position="-0.115 5 -15.265" rotation="0 0 -45" visible="false"
+            event-set__enter="_target: #Mitte; _event: click; animation.property: scale; animation.to: 0.75 0.75 0.75 animation.easing: easeInOutQuad; animation.dur: 0.00001;" 
+            event-set__enter2="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.418 0.2 -13.770 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+            event-set__enter3="_target: #Ladebox; _event: click; animation.property: scale; animation.to: 20 20 20 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+          <a-image class="clickable" src="#Weiter" material.transparent="true" width=".4" height=".4" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot> 
+        
+        
+           <a-hotspot   id="Part4" scale=".75 .75 .75" class="clickable" for="Stollen_Szene3" to="Stollen_Mitte" position="-0.088 1 0.670" rotation="0 180 -45" visible="false"
+                event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: -0.198 0.180 -12.968 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+               event-set__enter2="_target: #muenze_animiert; _event: click; animation.property: position; animation.to: -0.052 0.989 -0.953 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                      >
+             
+          <a-image id="reset_Muenze" class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".5 .5 .5" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+        
+        <a-hotspot id="Part5" class="clickable" for="Stollen_Innen" to="Stollen_Eingang" position="0.117 1 -3.363" rotation="-20 180 -45" visible="false"
+                    event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to:0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.001;" 
+                    event-set__opacity_2="_target: #Porträt_3; _event: click; animation.property: scale; animation.to: 0 0 0  animation.easing: easeInOutQuad; animation.dur: 3000;"
+                  event-set__opacity_6="_target: #hotspot_text4; _event: click; animation.property: opacity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 15000;"
+                   event-set__opacity_9="_target: #Part5; _event: click; animation.property: position; animation.to: 0.117 1 -3.363 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                   event-set__opacity_11="_target: #Part3; _event: click; animation.property: position; animation.to: 0 5 0 animation.easing: easeInOutQuad; animation.dur: 0.001;"
+                    event-set__opacity_7="_target: #Part2; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                   event-set__scale_2="_target: #Part2; _event: click; animation.property: position; animation.to: 0 -5 0 animation.easing: easeInOutQuad; animation.dur: 0.0000001; loop: false;">
+
+          <a-image id="last" class="clickable" src="#Weiter" material.transparent="true" width=".5" height=".5" scale=".75 .75 .75" 
+                   event-set__enter_hover="_event: mouseleave; opacity: 1;"
+                 event-set__leave_hover="_event: mouseenter; opacity: .5; delay:2000;"
+                event-set__ausblenden="_target: #Hinweise; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.0000001;"
+></a-image>
+        </a-hotspot>
+        
+        
+     
+        
+      </a-tour>
+
+               <a-entity
+        light="type:directional; castShadow:true; intensity:1.6"
+        position="1 1 1"
+      ></a-entity>
+      
+
+
+      <a-light type="ambient" intensity="2"> </a-light>
+  
+     
+      
+     <a-entity id="cameraRig" position="0 0 0" rotation=" 0 0 0">  
+       
+      
+       
+      <a-camera id="camera" camera look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;"  position="0 1.5 0" fov="80" >
+
+        <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">
+        </a-entity>
+     
+      </a-camera>
+      
+      </a-entity>
+  
+    </a-scene>
+        <script>
+
+          
+
+
+  // Prüfen, ob die Seite in einem iframe geladen ist
+  if (window.self !== window.top) {
+    // Wenn die Seite in einem iframe geladen ist, das switcher-nav-Element ausblenden
+    document.addEventListener("DOMContentLoaded", function() {
+      var switcherNav = document.querySelector('.switcher-nav');
+      if (switcherNav) {
+        switcherNav.style.display = 'none';
+      }
+    });
+  }
+
+
+var inactivityDelay = 120000; // 2 Minuten bis zum Countdown-Start
+var countdownTime = 10; // 10 Sekunden Countdown
+var inactivityTimer;
+var countdownTimer;
+var timerTextEntity;
+
+function restartApplication() {
+    location.reload();
+}
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    clearInterval(countdownTimer);
+    timerTextEntity.setAttribute('text', 'value', '');
+    inactivityTimer = setTimeout(startCountdown, inactivityDelay);
+}
+
+function startCountdown() {
+    var remainingTime = countdownTime;
+    countdownTimer = setInterval(function() {
+        timerTextEntity.setAttribute('text', 'value', 'Weiter oder Neustart in: ' + remainingTime + ' sec');
+        remainingTime--;
+        if (remainingTime < 0) {
+            clearInterval(countdownTimer);
+            restartApplication();
+        }
+    }, 1000);
+}
+
+function setupInactivityTimer() {
+    timerTextEntity = document.getElementById('timerText');
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('mousedown', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('scroll', resetTimer);
+    resetTimer();
+}
+
+window.onload = function() {
+    // Button-Klick-Event hinzufügen, um das Skript zu starten
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', function() {
+        setupInactivityTimer();
+
+        // A-Frame-spezifische Ereignisse hinzufügen
+        var sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('click', resetTimer);
+        sceneEl.addEventListener('touchstart', resetTimer);
+
+        // A-Frame Raycaster Interaktionserkennung
+        var raycastTargets = document.querySelectorAll('.clickable');
+        raycastTargets.forEach(function (target) {
+            target.addEventListener('click', resetTimer);
+        });
+    });
+};
+
+  
+          
+
+
+   document.getElementById('start-button').addEventListener('click', function() {
+            document.getElementById('Part2').setAttribute('position', '0.043 1 -2');
+        });
+
+      
+     
+           AFRAME.registerComponent('animation-handler', {
+    init: function () {
+      var box = this.el;
+      var isAnimating = false;
+
+      box.addEventListener('click', function () {
+        if (!isAnimating) {
+          isAnimating = true;
+          box.emit('startAnimation');
+
+          // Set a timeout to reset isAnimating after the longest animation duration
+          setTimeout(function() {
+            isAnimating = false;
+          }, 8000);  // 8000 ms is the duration of the longest animation
+        }
+      });
+    }
+  });
+
+  document.querySelector('#muenze_animiert').setAttribute('animation-handler', '');
+          
+               // Globale Variable für das derzeit abgespielte Video
+let currentVideo = null;
+
+function playVideo(videoId) {
+  const videoEl = document.querySelector(videoId);
+
+
+  if (currentVideo && currentVideo !== videoEl) {
+    currentVideo.pause();
+    currentVideo.currentTime = 0; 
+  }
+
+  videoEl.muted = true; 
+  videoEl.play().then(() => {
+    videoEl.muted = false;
+    currentVideo = videoEl; 
+  }).catch((error) => {
+    console.error("Video konnte nicht abgespielt werden: ", error);
+  });
+}
+
+AFRAME.registerComponent('play-video-on-click', {
+  schema: {
+    videoId: { type: 'string' }
+  },
+  init: function () {
+    const videoId = this.data.videoId;
+    this.el.addEventListener('click', function () {
+      playVideo(videoId);
+    });
+    this.el.addEventListener('touchstart', function () {
+      playVideo(videoId);
+    });
+  }
+});
+
+// Attach the component to the buttons with the respective video IDs
+document.querySelector('#start-button').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_1');
+document.querySelector('#Part5').setAttribute('play-video-on-click', 'videoId: #Platzhalter');
+document.querySelector('#Part6').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_2');
+
+document.querySelector('#trigger8').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_3');
+document.querySelector('#Part4').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_4');
+
+
+document.querySelector('#Part2').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_2');
+document.querySelector('#hotspot3').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_3');
+document.querySelector('#Part3').setAttribute('play-video-on-click', 'videoId: #Humboldt_speaking_4');
+document.querySelector('#Mitte').setAttribute('play-video-on-click', 'videoId: #Platzhalter');
+
+          
+// Select the trigger buttons and videos
+const trigger1 = document.querySelector('#start-button');
+const trigger2 = document.querySelector('#Part2');
+const trigger3 = document.querySelector('#hotspot3');
+const trigger4 = document.querySelector('#Part6');
+const trigger5 = document.querySelector('#Mitte');
+const trigger6 = document.querySelector('#Part4');
+          
+const trigger8 = document.querySelector('#trigger8');
+          
+          
+const trigger7 = document.querySelector('#Part3');
+const trigger9 = document.querySelector('#Part5');
+          
+
+const sub1 = document.querySelector('#Humboldt_subs_1');
+const sub2 = document.querySelector('#Humboldt_subs_2');
+const sub3 = document.querySelector('#Humboldt_subs_3');
+const sub4 = document.querySelector('#Humboldt_subs_4');
+const sub5 = document.querySelector('#Platzhalter');
+
+// Helper function to show a specific video and hide others
+function showVideo(videoToShow) {
+    const videos = [sub1, sub2, sub3, sub4];
+    videos.forEach(video => {
+        if (video === videoToShow) {
+            video.classList.remove('hidden');
+            video.classList.add('visible');
+            video.currentTime = 0; // Ensure the video starts from the beginning
+        } else {
+            video.classList.remove('visible');
+            video.classList.add('hidden');
+        }
+    });
+}
+
+// Helper function to hide a specific video
+function hideVideo(videoToHide) {
+    video.currentTime = 0;
+  videoToHide.classList.remove('visible');
+    videoToHide.classList.add('hidden');
+  
+}
+
+// Initialize videos to be hidden
+window.addEventListener('load', () => {
+    [sub1, sub2, sub3, sub4].forEach(video => {
+        hideVideo(video);
+    });
+});
+
+// Event listeners for triggers
+trigger1.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub1); // Show sub1 and hide others
+        sub1.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger2.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub2 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger3.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub3 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger4.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub4 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+    
+ 
+       trigger5.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub5); // Show sub4 and hide others
+        sub5.play();
+    }, 0); // Delay in milliseconds
+});
+          
+          trigger6.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub4); // Show sub3 and hide others
+        sub4.play();
+    }, 0); // Delay in milliseconds
+});
+          
+                    
+          trigger7.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub4); // Show sub3 and hide others
+        sub4.play();
+    }, 0); // Delay in milliseconds
+});
+          
+          
+                trigger8.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub3 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+          
+            trigger9.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub5); // Show sub3 and hide others
+        sub5.play();
+    }, 0); // Delay in milliseconds
+});
+          
+          
+          
+           // JavaScript, um den Trigger-Click-Event zu behandeln
+      document.addEventListener('DOMContentLoaded', function () {
+        document.querySelector('#Mitte').addEventListener('click', function () {
+          const entity = document.querySelector('#muenze_animiert');
+          if (entity) {
+            // Setze die Attribute
+            entity.setAttribute('position', '-0.052 0.989 -0.953');
+            entity.setAttribute('scale', '0.3 0.3 0.3');
+
+            // Entferne alle vorhandenen Animationen
+            entity.removeAttribute('animation');
+            entity.removeAttribute('animation__rotation');
+
+            // Füge eine neue Rotation-Animation hinzu
+            entity.setAttribute('animation__rotation', {
+              property: 'rotation',
+              to: '75 0 0',
+              dur: 0.00001, // Dauer der Animation in Millisekunden
+              easing: 'easeInOutQuad', // Easing-Typ
+              loop: false // Animation läuft nur einmal
+            });
+          }
+        });
+      });
+          
+
+    
+      function hideOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+
+
+       document.getElementById('start-button').addEventListener('click', function() {
+    const video = document.querySelector('#Humboldt_speaking_1');
+    const poster = document.querySelector('#video1_poster');
+
+    // Play the video
+    video.play().catch(error => console.error('Error playing video:', error));
+    
+    // Set the opacity of the poster to 0 with a duration of 2000ms
+    poster.setAttribute('animation', {
+        property: 'material.opacity',
+        to: '0',
+        dur: '1000'
+    });
+});
+
+document.getElementById('Part2').addEventListener('click', function() {
+    const video = document.querySelector('#Humboldt_speaking_1');
+    
+    // Stop the video and reset the time
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+});
+          
+          document.getElementById('Part5').addEventListener('click', function() {
+    // Make the overlay visible again
+    document.getElementById("overlay").style.display = "flex";
+    
+    // Reset the rotation of the cameraRig
+    const cameraRig = document.querySelector('#cameraRig');
+    if (cameraRig) {
+        cameraRig.setAttribute('rotation', '0 180 0');
+    }
+});
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+          
+    </script>
+  </body>
+</html>

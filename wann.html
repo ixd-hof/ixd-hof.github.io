@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title> Tablet - Wunsiedel</title>
+       <link rel="stylesheet" href="./style_wann.css">
+
+
+    
+    <script src="js/aframe.min.js"></script>
+    <script src="js/aframe.extras.js"></script>
+    
+    <script src="panorama/helper.js"></script>
+    <script src="panorama/hotspot.js"></script>
+    <script src="panorama/panorama.js"></script>
+    <script src="panorama/tour.js"></script>
+    
+    <script src="js/script.js"></script>
+    
+    <script src="js/transparent-video-shader.js"></script>
+    <script src="js/event-set-component.js"></script>
+    <script src="js/billboard-look-component.js"></script>
+    
+  
+    
+
+   
+  </head>
+  
+  <body>
+    
+      <div id="overlay">
+  <div id="hinweis-container">
+    <img id="nutzerhinweis" src="./img/Nutzerhinweis_Tablet.png" alt="Nutzerhinweis">
+    <img id="start-button" src="./img/Ueberspringen_Button.png" alt="Jetzt Starten" onclick="hideOverlay()">
+  </div>
+</div>
+
+<div class="switcher-nav">
+  <a href="index.html" class="go-to-index-button" id="indexButton">
+    Home
+  </a>    
+  <div class="switcher-nav-inner">
+      <a href="luise.html" class="arrow left-arrow">←</a>
+      <div class="footer-text">Sigmund Wann</div>
+      <a href="wanderer.html" class="arrow right-arrow">→</a>
+  </div>
+</div>
+   
+   
+    
+    
+      <div class="video-container">
+   
+        <video id="Wann_subs_1" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/Wann_Subs_1-1.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/Wann_subs_1.webm" type="video/webm">
+      </video>
+      
+      <video id="Wann_subs_2" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/Wann_Subs_2-1.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/Wann_subs_2.webm" type="video/webm">
+      </video>
+      
+      <video id="Wann_subs_3" crossorigin="anonymous" playsinline webkit-playsinline muted style="width:0%; height:0%;">
+          <!-- HEVC video for safari support -->
+          <source src="./videos/HalterPlatz.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/HalterPlatz.mov" type="video/webm">
+      </video>
+       
+     
+    </div>
+    
+    
+    <a-scene  
+    xr-mode-ui="enabled: false"
+  id="scene"
+ cursor="rayOrigin: mouse" loading-screen="dotsColor: white; backgroundColor: #A4BC49" renderer="colorManagement: true;">
+      
+      <!-- Preload assets like panoramas and 3D Models -->
+      <a-assets timeout="10000">
+     
+        <img id="Bierkeller_Szene" src="./img/Wann_Bierkeller_Panorama.jpg" crossorigin="anonymous">
+
+        <img id="zurBrüderstube" src="./img/Bruederstube.png" crossorigin="anonymous">
+<img id="zumBierkeller" src="./img/Bierkeller.png" crossorigin="anonymous">
+<img id="Sprungpunkt_1" src="./img/Foots_Sprungpunkt.png" crossorigin="anonymous">
+<img id="Hinweis" src="./img/Hinweis_Zinnkrug_Tablet.png" crossorigin="anonymous">
+<img id="Hinweis_Bilder" src="./img/Hinweis_Bilder.png" crossorigin="anonymous">
+<img id="Infotafel" src="./img/Infotafel_Bierkeller.png" crossorigin="anonymous">
+<img id="Mauer" src="./img/Stadtmauer.png" crossorigin="anonymous">
+
+<img id="Schatten" src="./img/Schatten.png" crossorigin="anonymous">
+
+<video id="Wann_speaking_1" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Wann_Speaking_1mov-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wann_Speaking_1.webm" type="video/webm">
+</video>
+
+<video id="Wann_speaking_2" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Wann_Speaking_2-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wann_Speaking_2.webm" type="video/webm">
+</video>
+
+<video id="Platzhalter" crossorigin="anonymous" playsinline webkit-playsinline muted>
+  <source src="./videos/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Platzhalter.mov" type="video/webm">
+</video>
+
+<a-asset-item id="Brüderstube_Bild1" src="./models/Bruederstube_Bild_2.glb" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="Brüderstube_Bild2" src="./models/Bruederstube_Bild_1.glb" crossorigin="anonymous"></a-asset-item>
+
+<a-asset-item id="Museumsraum_textured" src="./models/Ausstellungsraum.glb" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="Zinnkrug" src="./models/Zinnkrug.glb" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="Möbel" src="./models/Ausstellungsraum_Moebel.glb" crossorigin="anonymous"></a-asset-item>
+
+
+<img id="Wann_speaking_1_poster" src="./img/Wann_poster.png" crossorigin="anonymous">
+
+       
+      </a-assets>
+
+  <a-entity id="cameraRig" position="4 0 -0.7" rotation="0 -90 0" >  
+      
+  
+   
+       
+      <a-camera id="camera" camera 
+      look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;" 
+      position="0 1.4 0" fov="80" >
+         
+      <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">
+      </a-entity>
+
+        
+      </a-camera>
+      
+      </a-entity>
+      
+      <a-tour>
+        
+        
+        <!-- Panorama nodes and content -->
+  
+       
+        
+<a-panorama id="Ausstellungsraum_Rückblick" src="#Bierkeller_Szene" rotation="0 0 0" visible="false">
+<a-entity id="Raum_Brüderstube_2" position="3.563 0 0.006">
+  
+<a-entity position="-0.420 0 0.714" >
+  <a-entity id="video1" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Wann_speaking_1; transparent: true; depthWrite:false;"
+                  scale= ".45 .45 .45"
+        geometry="primitive: plane;
+                  width: 2.22;
+                  height: 4.8;"
+        position="2.245 0.891 -1.858"
+        rotation="0 -60 0"> </a-entity> 
+  
+            <a-image src="#Schatten" rotation="90 0 0" position="2.395 0.015 -1.882" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+        
+        <a-entity id="video1_poster" 
+        scale= ".45 .45 .45"
+        material="src: #Wann_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat;"
+        geometry="primitive: plane;
+                   width: 2.22;
+                  height: 4.8;"
+                  rotation="0 -60 0"
+                  material.transparent="true"
+        position="2.245 0.891 -1.858"> </a-entity>
+  
+   
+  </a-entity>
+  
+  <a-entity gltf-model="#Museumsraum_textured" scale="1 1 1" position="-3.500 -0.183 0" rotation="0 90 0">
+       
+      
+       <a-entity gltf-model="#Möbel" scale="1 1 1" position="0 0 0" rotation="0 0 0"></a-entity>
+    
+    
+          
+ <a-entity class="clickable" id="Bild1" gltf-model="#Brüderstube_Bild1" scale=".1 .1 0.090" position="0.399 1.329 6.146" rotation="0 90 0"
+       event-set__enter="_target: #Bild1; _event: mouseenter; animation.property: position; dir: alternate; animation.to: 0.7 1.5 4.240 ;animation.easing: easeInOutQuad; animation.dur: 2000;"
+        event-set__leave="_target: #Bild1;  _event: mouseleave; animation.property: position; dir: alternate; animation.to: 0.399 1.329 6.146 ;animation.easing: easeInOutQuad; animation.dur: 2000;"
+> </a-entity>  
+                  
+   <a-entity class="clickable" id="Bild_zwei" gltf-model="#Brüderstube_Bild2" scale=" .1 .1 0.090" position="0.046 1.881 6.146" rotation="0 90 0"
+       event-set__enter="_target: #Bild_zwei; _event: mouseenter; animation.property: position; dir: alternate; animation.to: 0.7 1.5 4.240 ;animation.easing: easeInOutQuad; animation.dur: 2000;"
+        event-set__leave="_target: #Bild_zwei; _event: mouseleave; animation.property: position; dir: alternate; animation.to: 0.046 1.881 6.146 ;animation.easing: easeInOutQuad; animation.dur: 2000;"></a-entity>    
+
+     <a-entity color="#AA0000" position="3.138 0.977 1.052" rotation="0 90 0" opacity="0" scale=".3 .3 .3" width="0.100" depth="0.500" height="0.800"
+               > 
+              <a-entity id="Krug" gltf-model="#Zinnkrug" scale=".5 .5 .5" position="0 0 0" rotation="0 0 0"></a-entity>
+          </a-entity>
+    
+    
+ </a-entity>
+</a-entity>
+      
+    
+      <a-image src="#Mauer" material.transparent="true" width="4" height="3" class="clickable" position="8.312 0.758 -0.134" scale="2 2 2" rotation="0 90 0"></a-image>
+      <a-image src="#Mauer" material.transparent="true" width="4" height="3" class="clickable" position="3.099 0.758 -7.084" scale="2 2 2" rotation="0 0 0"></a-image>
+
+     <a-image billboard src="#Hinweis_Bilder" scale="0.4 0.4 0.4" rotation="0 90 0" position="5.128 0.891 -0.293 " material.transparent="true" width="1.5" height=".75"></a-image>
+          
+        </a-panorama>
+        
+        
+<a-panorama id="Ausstellungsraum_Brüderstube" scale="0 0 0" src="#" rotation="0 0 0" visible="false" position="0 0.15 0">
+    <a-entity id="Raum_Brüderstube_Zinnkrug" position="1.530 0 3.130">
+      
+      
+        <a-entity id="video2_poster" 
+        scale= ".45 .45 .45"
+        material="src: #Wann_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat;"
+        geometry="primitive: plane;
+                  width: 2.22;
+                  height: 4.8;"
+                  rotation="0 -100 0"
+        position="1.874 0.9 -1.330"> </a-entity>
+
+              <a-entity 
+        material="shader: transparent-video; alphaTest:0.5; src: #Platzhalter; transparent: true;"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="0 100 0"
+        rotation="0 -100 0"> </a-entity> 
+      
+          <a-image src="#Schatten" rotation="90 0 0" position="1.874 0.015 -1.330" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="2 2 2" ></a-image>
+
+  
+      
+                <a-entity gltf-model="#Museumsraum_textured" scale="1 1 1" position="-3.500 -0.183 0" rotation="0 90 0">
+
+
+                     <a-entity gltf-model="#Möbel" scale="1 1 1" position="0 0 0" rotation="0 0 0"></a-entity>
+
+                  
+ <a-entity gltf-model="#Brüderstube_Bild1" scale=".1 .1 0.090" position="0.399 1.329 6.146" rotation="0 90 0"> </a-entity> 
+    <a-entity gltf-model="#Brüderstube_Bild2" scale=" .1 .1 0.090" position="0.046 1.881 6.146" rotation="0 90 0">  </a-entity>
+
+
+               </a-entity>
+               </a-entity>
+  
+          
+           <a-entity  
+ id="Zinnkrug_greifbar"  color="#AA0000" position="-0.596 0.806 -0.082" rotation="0 90 0" opacity="0" scale=".3 .3 .3" width="0.100" depth="0.500" height="0.800"
+ event-set__enter="_target: #Zinnkrug_greifbar; _event: mouseenter; animation.property: position; dir: alternate; animation.to: -0.293 1 -0.007; animation.easing: easeInOutQuad; animation.dur:2000;"
+ event-set__enter_2="_target: #Zinnkrug_greifbar; _event: mouseleave; animation.property: position; dir: alternate; animation.to: -0.596 0.806 -0.082; animation.easing: easeInOutQuad; animation.dur: 1000;"
+ event-set__enter_rotation="_target: #Zinnkrug_greifbar; _event: mouseenter; animation__rotation.property: rotation; dir: alternate; animation__rotation.to: 0 45000 20; loop:true; animation__rotation.easing: easeInOutQuad; animation__rotation.dur: 300000;"
+ event-set__leave_rotation="_target: #Zinnkrug_greifbar; _event: mouseleave; animation__rotation.property: rotation; dir: alternate; animation__rotation.to: 0 90 0; animation__rotation.easing: easeInOutQuad; animation__rotation.dur: 1000;">
+                     >   
+             <a-entity gltf-model="#Zinnkrug" scale=".5 .5 .5" position="0 0 0" rotation="0 0 0"
+              >   
+
+
+          </a-entity>
+       </a-entity>
+         
+     
+    <a-image billboard src="#Hinweis" scale="0.2 0.2 0.2" rotation="0 90 0" position="-0.8 1.219 0.016" material.transparent="true" width="1.5" height=".75"></a-image>
+      
+            
+      
+      <a-image crossorigin="anonymous" src="#Mauer" material.transparent="true" width="3" height="3" class="clickable" position="8.312 0.758 -0.134" scale="2 2 2" rotation="0 90 0"></a-image>
+      <a-image crossorigin="anonymous" src="#Mauer" material.transparent="true" width="3" height="3" class="clickable" position="3.099 0.758 -7.084" scale="2 2 2" rotation="0 0 0"></a-image>
+
+          
+          
+        </a-panorama>
+        
+        
+       
+        
+        
+        
+  
+        
+        <a-panorama id="Bierkeller" src="#Bierkeller_Szene" rotation="0 0 0" position="0 1.6 0" visible="false">
+       
+            <!--    <a-entity class="collision" gltf-model="#Fass" scale="1 1 1" position="0.38 -0.950 3.8" rotation="0 90 0"></a-entity>
+         <a-entity class="collision" gltf-model="#Zinnkrug" scale="0.2 0.2 0.2" position="1.385 -0.441 1.903" rotation="0 0 0"></a-entity> -->
+
+          
+          <a-entity position="-2.240 -0.138 5.104" scale="1.75 1.75 1.75" rotation="0 -180 0">
+          <a-entity id="video2" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Wann_speaking_2; transparent: true;depthWrite:false;"
+                  scale= "1 1 1"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position=" 1.907 -0.825 -1.656"
+        rotation="0 -45 0"> </a-entity> 
+            
+              <a-entity id="video_poster_3" 
+        scale= "1.020 1.020 1.020"
+        material="src: #Wann_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat; depthWrite:false;"
+        geometry="primitive: plane;
+                  width: 2.22;
+                  height: 4.8;"
+                  rotation="0 -45 0"
+        position="1.907 -0.825 -1.656"> </a-entity>
+            
+        <a-image src="#Schatten" rotation="90 0 0" position="1.713 -2.802 -1.260" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="5 5 5" ></a-image>
+
+          </a-entity>
+          
+         
+          
+            <a-image src="#Infotafel" material.transparent="true" alphatest= "0.5;" 
+                 rotation="0 90 0" width="1" height="1" opacity="1" scale="6 6 6" position="-6.906 0 -1.398"></a-image>
+          
+       
+
+            
+          
+        </a-panorama>
+        
+        
+      
+      
+       <!-- Links between panoramas -->
+      
+        
+        
+        
+        
+       
+        <a-hotspot id="trigger5" billboard class="clickable" for="Ausstellungsraum_Brüderstube" to="Ausstellungsraum_Rückblick" position="2.686 1 2.135" rotation="0 0 0" scale="0 0 0" visible="false"
+                                       event-set__enter1="_target: #cameraRig; _event: click; animation.property: position; animation.to: 4 0 -0.7 animation.easing: easeInOutQuad; animation.dur: 0.0000000001;"
+                                      event-set__enter_4="_target: #Ausstellungsraum_Rückblick; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                                   event-set__enter5="_target: #Zinnkrug_greifbar; _event: click; animation.property: rotation; animation.to: 0 90 0 animation.easing: easeInOutQuad; loop:false; animation.dur: 0.00000001;">
+  
+
+ 
+
+          <a-image src="#Sprungpunkt_1" material.transparent="true" width=".25" height=".25" class="clickable"
+                   event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__enter_3="_target: #Ausstellungsraum_Brüderstube; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+></a-image>
+        </a-hotspot>
+        
+        
+        <a-hotspot id="trigger2" billboard class="clickable" for="Ausstellungsraum_Rückblick" to="Bierkeller" position="2.241 1.4 -0.072" rotation="0 0 0" scale="0 0 0" visible="false" 
+                  event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                  event-set__enter_4="_target: #Ausstellungsraum_Rückblick; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+>
+           <a-image src="#zumBierkeller" material.transparent="true" width="0.75" height=".25" class="clickable"
+                       event-set__enter1="_target: #trigger1; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                    event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                event-set__click="_target: #video1_poster; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 2000;"
+                event-set__click_2="_target: #video_poster_3; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 3000;"
+
+                    ></a-image>
+          
+        </a-hotspot>
+        
+        <a-hotspot id="trigger4" billboard class="clickable" for="Ausstellungsraum_Rückblick" to="Ausstellungsraum_Brüderstube" position="2.3 1 -2.5" rotation="0 0 0" scale="0 0 0" visible="false" 
+                  event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                event-set__click="_target: #video1_poster; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 2000;"
+                  event-set__enter_3="_target: #Ausstellungsraum_Brüderstube; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                  event-set__enter_4="_target: #Ausstellungsraum_Rückblick; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+
+                  event-set__enter2="_target: #Zinnkrug_greifbar; _event: click; animation.property: position; animation.to: -0.596 0.806 -0.082 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                 >
+
+           <a-image src="#Sprungpunkt_1" material.transparent="true" width=".25" height=".25" class="clickable"
+                                 event-set__enter1="_target: #trigger1; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                    event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                  event-set__enter5="_target: #Zinnkrug_greifbar; _event: touchstart; animation.property: rotation; animation.to: 0 90 0 animation.easing: easeInOutQuad; loop:false; animation.dur: 0.00000001;"></a-image>
+        </a-hotspot>
+        
+    
+        
+        
+        <a-hotspot id="trigger3" billboard class="clickable" for="Bierkeller" to="Ausstellungsraum_Rückblick" position="-6.116 2.957 4.446" rotation="0 0 0" scale=".2 .2 .2 "
+                   event-set__enter1="_target: #Sprungpunkt_Brüderstube; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad loop:true; animation.dur: 1000;"
+                   event-set__enter2="_target: #Keller; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                   event-set__enter3="_target: #cameraRig; _event: click; animation.property: position; animation.to: 4 0 -0.7 animation.easing: easeInOutQuad; animation.dur: 0.0000000001;"
+                   event-set__enter_4="_target: #Ausstellungsraum_Rückblick; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+>
+
+
+           <a-image src="#zurBrüderstube" material.transparent="true" width="2.625" height="0.875" class="clickable"
+                    event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+        
+        
+        
+         <a-hotspot id="trigger6" billboard class="clickable" for="Ausstellungsraum_Brüderstube" to="Bierkeller" position="-1.503 1.4 3.338" rotation="0 0 0" scale=".3 .3 .3 "
+                   event-set__enter3="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.0000000001;"
+                  event-set__enter_5="_target: #Ausstellungsraum_Brüderstube; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+event-set__enter5="_target: #Zinnkrug_greifbar; _event: click; animation.property: rotation; animation.to: 0 90 0 animation.easing: easeInOutQuad; loop:false; animation.dur: 0.00000001;"
+            event-set__click_2="_target: #video_poster_3; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 2000;"
+
+                    >
+           <a-image src="#zumBierkeller" material.transparent="true" width="0.825" height="0.275" class="clickable"
+                    event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                event-set__enter_4="_target: #Ausstellungsraum_Rückblick; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+></a-image>
+        </a-hotspot>
+        
+   
+         <a-entity light="type: ambient; color: #888"></a-entity>
+        <a-entity light="type: ambient; color: #888" position="1 1 1"></a-entity>
+      <a-entity light="type: directional; color: #fff; intensity: 0.5" position="-1 1 0"></a-entity>
+      <a-entity light="type: directional; color: #fff; intensity: 0.5" position="1 1 0"></a-entity>
+        
+        
+      </a-tour>
+      
+ 
+
+      
+      
+
+    </a-scene>
+    
+     <script>
+
+
+
+       // Prüfen, ob die Seite in einem iframe geladen ist
+  if (window.self !== window.top) {
+    // Wenn die Seite in einem iframe geladen ist, das switcher-nav-Element ausblenden
+    document.addEventListener("DOMContentLoaded", function() {
+      var switcherNav = document.querySelector('.switcher-nav');
+      if (switcherNav) {
+        switcherNav.style.display = 'none';
+      }
+    });
+  }
+
+var inactivityDelay = 120000; // 2 Minuten bis zum Countdown-Start
+var countdownTime = 10; // 10 Sekunden Countdown
+var inactivityTimer;
+var countdownTimer;
+var timerTextEntity;
+
+function restartApplication() {
+    location.reload();
+}
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    clearInterval(countdownTimer);
+    timerTextEntity.setAttribute('text', 'value', '');
+    inactivityTimer = setTimeout(startCountdown, inactivityDelay);
+}
+
+function startCountdown() {
+    var remainingTime = countdownTime;
+    countdownTimer = setInterval(function() {
+        timerTextEntity.setAttribute('text', 'value', 'Weiter oder Neustart in: ' + remainingTime + ' sec');
+        remainingTime--;
+        if (remainingTime < 0) {
+            clearInterval(countdownTimer);
+            restartApplication();
+        }
+    }, 1000);
+}
+
+function setupInactivityTimer() {
+    timerTextEntity = document.getElementById('timerText');
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('mousedown', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('scroll', resetTimer);
+    resetTimer();
+}
+
+window.onload = function() {
+    // Button-Klick-Event hinzufügen, um das Skript zu starten
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', function() {
+        setupInactivityTimer();
+
+        // A-Frame-spezifische Ereignisse hinzufügen
+        var sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('click', resetTimer);
+        sceneEl.addEventListener('touchstart', resetTimer);
+
+        // A-Frame Raycaster Interaktionserkennung
+        var raycastTargets = document.querySelectorAll('.clickable');
+        raycastTargets.forEach(function (target) {
+            target.addEventListener('click', resetTimer);
+        });
+    });
+};
+
+
+  
+  
+                      // Globale Variable für das derzeit abgespielte Video
+let currentVideo = null;
+
+function playVideo(videoId) {
+  const videoEl = document.querySelector(videoId);
+
+
+  if (currentVideo && currentVideo !== videoEl) {
+    currentVideo.pause();
+    currentVideo.currentTime = 0; 
+  }
+
+  videoEl.muted = true; 
+  videoEl.play().then(() => {
+    videoEl.muted = false;
+    currentVideo = videoEl; 
+  }).catch((error) => {
+    console.error("Video konnte nicht abgespielt werden: ", error);
+  });
+}
+
+AFRAME.registerComponent('play-video-on-click', {
+  schema: {
+    videoId: { type: 'string' }
+  },
+  init: function () {
+    const videoId = this.data.videoId;
+    this.el.addEventListener('click', function () {
+      playVideo(videoId);
+    });
+  }
+});
+
+// Attach the component to the buttons with the respective video IDs
+document.querySelector('#start-button').setAttribute('play-video-on-click', 'videoId: #Wann_speaking_1');
+       document.querySelector('#trigger5').setAttribute('play-video-on-click', 'videoId: #Wann_speaking_1');
+
+document.querySelector('#trigger2').setAttribute('play-video-on-click', 'videoId: #Wann_speaking_2');
+document.querySelector('#trigger3').setAttribute('play-video-on-click', 'videoId: #Wann_subs_3');
+document.querySelector('#trigger6').setAttribute('play-video-on-click', 'videoId: #Wann_speaking_2');
+document.querySelector('#trigger4').setAttribute('play-video-on-click', 'videoId: #Platzhalter');
+
+
+const trigger1 = document.querySelector('#start-button');
+const trigger2 = document.querySelector('#trigger2');
+const trigger3 = document.querySelector('#trigger3');
+const trigger4 = document.querySelector('#trigger4');
+const trigger5 = document.querySelector('#trigger5');
+
+       
+const sub1 = document.querySelector('#Wann_subs_1');
+const sub2 = document.querySelector('#Wann_subs_2');
+const sub3 = document.querySelector('#Wann_subs_3');
+
+// Helper function to show a specific video and hide others
+function showVideo(videoToShow) {
+    const videos = [sub1, sub2, sub3];
+    videos.forEach(video => {
+        if (video === videoToShow) {
+            video.classList.remove('hidden');
+            video.classList.add('visible');
+            video.currentTime = 0; // Ensure the video starts from the beginning
+        } else {
+            video.classList.remove('visible');
+            video.classList.add('hidden');
+        }
+    });
+}
+
+// Helper function to hide a specific video
+function hideVideo(videoToHide) {
+    video.currentTime = 0;
+  videoToHide.classList.remove('visible');
+    videoToHide.classList.add('hidden');
+  
+}
+
+// Initialize videos to be hidden
+window.addEventListener('load', () => {
+    [sub1, sub2, sub3].forEach(video => {
+      videoToHide(video);
+    });
+});
+
+// Event listeners for triggers
+trigger1.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub1); // Show sub1 and hide others
+        sub1.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger2.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub2 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger3.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub3 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger4.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub4 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+       
+    trigger5.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub1); // Show sub4 and hide others
+        sub1.play();
+    }, 0); // Delay in milliseconds
+});
+    
+ 
+      
+          
+          trigger6.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub3 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+       
+          function hideOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+          function hideOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+    document.getElementById('start-button').addEventListener('click', function() {
+    const video = document.querySelector('#Wann_speaking_1');
+    const poster = document.querySelector('#video1_poster');
+
+    // Play the video
+    video.play().catch(error => console.error('Error playing video:', error));
+    
+    // Set the opacity of the poster to 0 with a duration of 2000ms
+    poster.setAttribute('animation', {
+        property: 'material.opacity',
+        to: '0',
+        dur: '1000'
+    });
+});
+
+function stopVideo() {
+    const video = document.querySelector('#Wann_speaking_1');
+    
+    // Stop the video and reset the time
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+}
+
+document.getElementById('trigger2').addEventListener('click', stopVideo);
+document.getElementById('trigger4').addEventListener('click', stopVideo);
+
+          document.getElementById('trigger3').addEventListener('click', function() {
+    // Make the overlay visible again
+    document.getElementById("overlay").style.display = "flex";
+    
+    // Reset the rotation of the cameraRig
+    const cameraRig = document.querySelector('#cameraRig');
+    if (cameraRig) {
+        cameraRig.setAttribute('rotation', '0 60 0');
+    }
+});
+
+       
+    </script>
+    
+    
+  </body>
+</html>

@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+  <head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tablet - Bischofsgrün Wanderer</title>
+    <link rel="stylesheet" href="./style_wanderer.css">
+    
+      <script src="js/aframe.min.js"></script>
+
+    <script src="js/aframe.extras.js"></script>
+    
+    <script src="panorama/helper.js"></script>
+    <script src="panorama/hotspot.js"></script>
+    <script src="panorama/panorama.js"></script>
+    <script src="panorama/tour.js"></script>
+     
+    <script src="js/script.js"></script> 
+    
+     <script src="js/transparent-video-shader.js"></script>
+    <script src="js/event-set-component.js"></script>
+    <script src="js/billboard-look-component.js"></script>
+  
+  </head>
+  
+      
+  <body>
+    
+     <div id="overlay">
+  <div id="hinweis-container">
+    <img id="nutzerhinweis" src="./img/Nutzerhinweis_Tablet.png" alt="Nutzerhinweis">
+    <img id="start-button" src="./img/Ueberspringen_Button.png" alt="Jetzt Starten" onclick="hideOverlay()">
+  </div>
+</div>
+
+<div class="switcher-nav">
+  <a href="index.html" class="go-to-index-button" id="indexButton">
+    Home
+  </a>    
+  <div class="switcher-nav-inner">
+      <a href="wann.html" class="arrow left-arrow">←</a>
+      <div class="footer-text">Johann Matthäus Wanderer</div>
+      <a href="cmh.html" class="arrow right-arrow">→</a>
+  </div>
+</div>
+   
+    
+    
+    
+      <div class="video-container">
+        <video id="Wanderer_subs_1"
+        crossorigin="anonymous"
+        playsinline
+        webkit-playsinline
+        muted>
+   <!-- HEVC video for safari support -->
+   <source src="./videos/Wanderer_subs_1-1.mov" type="video/mp4;codecs=hvc1">
+   <!-- WEBM video for chrome and firefox -->
+   <source src="./videos/Wanderer_subs_1.webm" type="video/webm" />
+ </video>  
+ 
+ <video id="Wanderer_subs_2"
+        crossorigin="anonymous"
+        playsinline
+        webkit-playsinline
+        muted>
+   <!-- HEVC video for safari support -->
+   <source src="./videos/Wanderer_subs_2-1.mov" type="video/mp4;codecs=hvc1">
+   <!-- WEBM video for chrome and firefox -->
+   <source src="./videos/Wanderer_subs_2.webm" type="video/webm" />
+ </video>  
+ 
+ <video id="Wanderer_subs_3"
+        crossorigin="anonymous"
+        playsinline
+        webkit-playsinline
+        muted>
+   <!-- HEVC video for safari support -->
+   <source src="./videos/Wanderer_subs_3-1.mov" type="video/mp4;codecs=hvc1">
+   <!-- WEBM video for chrome and firefox -->
+   <source src="./videos/Wanderer_subs_3.webm" type="video/webm" />
+ </video>  
+ 
+ <video id="Glasmacher_subs"
+        crossorigin="anonymous"
+        playsinline
+        webkit-playsinline>
+   <!-- HEVC video for safari support -->
+   <source src="./videos/Glasmacherlied_Untertitel_1-1.mov" type="video/mp4;codecs=hvc1">
+   <!-- WEBM video for chrome and firefox -->
+   <source src="./videos/Glasmacherlied_Untertitel.webm" type="video/webm" />
+ </video>
+ 
+     
+    </div>
+    
+    <a-scene cursor="rayOrigin: mouse" renderer="colorManagement: true;" loading-screen="dotsColor: white; backgroundColor: #A4BC49"
+    xr-mode-ui="enabled: false"
+              reflection="directionalLight:a-light#dirlight;"  >
+      
+      <!-- Preload assets like panoramas and content -->
+      <a-assets timeout="10000">
+       <!-- Bilder -->
+<img id="Hinweis" src="./img/Hinweis_Glas_tablet.png" crossorigin="anonymous">
+<img id="play" src="./img/Play_Icon.png" crossorigin="anonymous">
+<img id="Schatten" src="./img/Schatten_Portraets.png" crossorigin="anonymous">
+<img id="Wanderer_speaking_1_poster" src="./img/Wanderer_poster.png" crossorigin="anonymous">
+<img id="audiopunkt" src="./img/audiopunkt.png" crossorigin="anonymous">
+<img id="pause" src="./img/Pause.png" crossorigin="anonymous">
+<img id="stop" src="./img/stop.png" crossorigin="anonymous">
+<img id="Glashütte_Pano" src="./img/POI_Luisenruh.png" crossorigin="anonymous">
+<img id="Sprungpunkt" src="./img/Back_Forth_UI.png" crossorigin="anonymous">
+<img id="Info_Glaslied" src="./img/Info_Glaslied.png" crossorigin="anonymous">
+
+<img id="Wappen" src="./img/WappenWanderer.png" crossorigin="anonymous">
+<img id="Schmelzofen" src="./img/Ofen.png" crossorigin="anonymous">
+<img id="Glasbläser" src="./img/Glasmacher.png" crossorigin="anonymous">
+<img id="Person1" src="./img/Glashuette_Person_1.png" crossorigin="anonymous">
+<img id="Person2" src="./img/Glashuette_Person_2.png" crossorigin="anonymous">
+<img id="Person3" src="./img/Glashuette_Person_3.png" crossorigin="anonymous">
+<img id="Glasmacher" src="./img/Glasmacher.png" crossorigin="anonymous">
+
+<img id="Deko3" src="./img/Glashuette_Kruege.png" crossorigin="anonymous">
+
+<img id="Glasblaeser" src="./img/Glasmacher.png" crossorigin="anonymous">
+
+<!-- 3D-Modelle -->
+<a-asset-item id="Glas_Modell" src="./models/Ochsenkopfglas_Artefakt.glb" crossorigin="anonymous"></a-asset-item>
+<a-asset-item id="Glashuette_Modell" src="./models/Glashuette_Verkleinert.glb" crossorigin="anonymous"></a-asset-item>
+
+<!-- Videos -->
+<video id="Wanderer_speaking_1" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Wanderer_1_re-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wanderer_speaking_1.webm" type="video/webm">
+</video>
+
+<video id="Wanderer_speaking_2" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Wanderer_spekaing_2-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wanderer_speaking_2.webm" type="video/webm">
+</video>
+
+<video id="Wanderer_speaking_3" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Wanderer_3_re-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wanderer_speaking_3.webm" type="video/webm">
+</video>
+
+<video id="Glaslied" crossorigin="anonymous" playsinline webkit-playsinline muted>
+  <source src="./videos/Glasmacherlied_Untertitel_1-1.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wanderer_speaking_2.webm" type="video/webm">
+</video>
+
+<video id="Untertitel" crossorigin="anonymous" playsinline webkit-playsinline>
+  <source src="./videos/Glasmacherlied_Untertitels.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/Wanderer_speaking_2.webm" type="video/webm">
+</video>
+
+<video id="Platzhalter" crossorigin="anonymous" playsinline webkit-playsinline muted>
+  <source src="./videos/HalterPlatz.mov" type="video/mp4;codecs=hvc1">
+  <source src="./videos/HalterPlatz.mov" type="video/webm">
+</video>
+
+     
+        
+      </a-assets>
+
+      
+      
+      
+      <a-tour>
+        
+                
+        <a-panorama id="Wappen_Szene" src="#Glashütte_Pano" rotation="0 0 0"  scale=".9 .9 .9"  >
+        
+        
+        
+                      <a-entity
+                          gltf-model="#Glashuette_Modell"
+                          position="3.65 5 0"
+                          rotation="0 0 0"
+                          scale="1 1 1">
+                      </a-entity>
+          
+        
+     
+          
+          
+          
+          
+          
+          
+        
+                    <!-- Image Button to Play Sound -->
+      <a-image
+        id="playButton"
+        class="clickable"
+        src="#audiopunkt"
+        material="transparent: true"
+        width="0.5"
+        height="0.5"
+        position="0.911 1.6 0.855"
+               event-set__enter="_event: mouseleave; opacity: 1;"
+        event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+        event-set__opacity="_target: #stopButton; _event: click; animation.property: scale; animation.to: 1 1 1 animation.easing: easeInOutQuad; animation.dur: 0.00001"
+               >
+
+      </a-image>
+
+      <!-- Image Button to Stop Sound -->
+      <a-image
+        id="stopButton"
+        class="clickable"
+        src="#stop"
+        material="transparent: true"
+        width="0.5"
+        height="0.5"
+        scale="0 0 0"
+        position="0.911 1 0.855"
+        event-set__enter="_event: mouseleave; opacity: 1;"
+        event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+        event-set__opacity="_target: #stopButton; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001"
+
+      ></a-image>
+
+      <!-- Glaslied -->
+ <a-video 
+        id="videoPlane"
+        width="1"
+        height="0.231"
+          scale="0 0 0"
+        position="2.444 1.500 1.393"
+        material="shader: transparent-video; alphaTest:0.5; src: #Glaslied; transparent: true;"
+      ></a-video>                
+
+            <a-plane  position="2.271 1.292 0.744" rotation="0 0 0" width="1"
+  height="1" opacity="1" scale="1.8 1.8 1.8"
+                    material="src:#Glasmacher; alphaTest: 0.5;"
+                         ></a-plane>
+                
+               
+                
+                 <a-image billboard id="Infotext_Glasblaeser" src="#Info_Glaslied" material.transparent="true" alphatest= "0.5;" class="clickable"
+                 rotation="0 0 0" width="1" height="1" scale="2.2 2.2 2.2" position="4.000 2 2.423"></a-image>
+          
+              
+            
+
+          
+          
+          
+        
+             <a-plane position="1.155 2 7.495" rotation="0 180 0" width="4" height="4" opacity="1" scale=".3 .3 .3"
+                    material=" src: #Wappen; 
+        shader: flat;
+        alphaTest: 0.5;"
+                         ></a-plane>
+        
+             
+        
+       <a-entity position="-2.75 0 -0.415">
+                        <a-entity
+                     position="-0.709 0 -4.904"
+                rotation="0 90 0"
+                scale="1.5 1.5 1.5" >
+              </a-entity>
+          
+          
+      <a-entity position="-0.676 1.240 -5.2" scale=".19 .19 .19">
+          <a-entity position="1 0 0">
+                        <a-entity
+                        
+                       gltf-model="#Glas_Modell"
+                       position="-1.041 -0.878 -3.400"
+                      rotation="0 180 0"
+                        scale=".9 .9 .9"
+                     > </a-entity>
+                        </a-entity>
+      
+  </a-entity>
+  </a-entity>
+          
+          
+          
+           <a-entity >
+        <a-entity  id="portrait1" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Wanderer_speaking_1; transparent: true; depthWrite:false;"
+                  scale= ".5 .5 .5"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="2.175 1.069 6.864"
+        rotation="0 -160 0"> </a-entity>  
+      <!-- <a-image src="#Schatten" rotation="90 0 0" position="2.180 0.017 6.929" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="3.5 3.5 3.5" ></a-image>
+             -->
+              <a-entity  id="video1_poster" 
+        material="src: #Wanderer_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat;"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8"
+                  scale=".5 .5 .5"
+        position="2.175 1.069 6.864"
+                        rotation="0 -160 0"> </a-entity>
+             
+</a-entity>
+             
+          
+  
+          </a-panorama>
+        
+        
+        
+        
+        
+          <a-panorama id="Ofen_Szene" src="#Glashütte_Pano" rotation="0 0 0" scale="0 0 0" visible="false">
+         <!-- scale=".9 .9 .9" -->
+        
+        
+                      <a-entity
+                          gltf-model="#Glashuette_Modell"
+                          position="3.65 5 0"
+                          rotation="0 0 0"
+                          scale="1 1 1">
+                      </a-entity>
+        
+              <a-entity position="1 0 0" >
+                <a-plane billboard position="3.125 1.190 2.817" rotation="0 0 0" width="3.8" height="3.8" opacity="1" scale=".5 .5 .5"
+                material="src:#Person1; alphaTest: 0.5;"
+                     ></a-plane>
+       <a-plane billboard position="2.834 1.209 1.007" rotation="0 0 0" width="4" height="4" opacity="1" scale=".5 .5 .5"
+                material="src:#Person2; alphaTest: 0.5;"
+                     ></a-plane>
+       <a-plane billboard position="4.448 1.233 -3.143" rotation="0 0 0" width="4" height="4" opacity="1" scale=".5 .5 .5"
+                material="src:#Person3; alphaTest: 0.5;"
+                     ></a-plane>
+            
+            <a-plane  position="2.319 0.607 -0.896" rotation="0 -90 0" width="1" height="0.5" opacity="1" scale=" 2 2 2"
+                material="src:#Deko3; alphaTest: 0.5;"
+                     ></a-plane>
+       
+       
+          
+
+                     <a-plane id="Ofen" billboard position="4.442 1.432 -0.267" rotation="0  0" width="3" height="2.4" opacity="1" scale="1.5 1.5 1.5"
+                    material="src:#Schmelzofen; alphaTest: 0.5;"
+                         ></a-plane>
+          </a-entity>
+        
+        <a-plane position="1.155 2 7.495" rotation="0 180 0" width="4" height="4" opacity="1" scale=".3 .3 .3"
+                    material="src:#Wappen; alphaTest: 0.5;"
+                         ></a-plane>
+        
+      
+          
+ 
+      
+ 
+           
+                <a-entity position="-2.511 0.260 -8.552">
+        <a-entity id="portrait2" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Wanderer_speaking_2; transparent: true; depthWrite:false;"
+                  scale= ".5 .5 .5"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="3.337 1.092 6.246"
+        rotation="0 -60 0"> </a-entity>  
+      <!-- <a-image src="#Schatten" rotation="90 0 0" position="3.262 0.017 6.173" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="3.5 3.5 3.5" ></a-image>
+-->
+                  
+</a-entity>
+            
+        
+       <a-entity id="" position="-2.75 0 -0.415">
+                        <a-entity
+                     position="-0.709 0 -4.904"
+                rotation="0 90 0"
+                scale="1.5 1.5 1.5" >
+              </a-entity>
+          
+          
+      <a-entity id="" position="-0.676 1.240 -5.2" scale=".19 .19 .19">
+          <a-entity position="1 0 0">
+                        <a-entity
+                        id=""
+                       gltf-model="#Glas_Modell"
+                       position="-1.041 -0.878 -3.400"
+                      rotation="0 180 0"
+                        scale="3.5 3.5 3.5"
+                     > </a-entity>
+                        </a-entity>
+          
+            
+  </a-entity>
+      </a-entity>    
+
+        
+     
+       
+  
+          </a-panorama>
+        
+        
+         <a-panorama id="Glas_Szene" src="#Glashütte_Pano"  scale=" 0 0 0" visible="false">
+          <!-- scale=".9 .9 .9"  -->
+        
+        
+                      <a-entity
+                          gltf-model="#Glashuette_Modell"
+                          position="3.65 5 0"
+                          rotation="0 0 0"
+                          scale="1 1 1">
+                      </a-entity>
+        
+             
+   <!--  <a-image billboard src="#Hinweis" scale="0.3 0.3 0.3" rotation="0 90 0" position="-3.805 1.647 -5.912" material.transparent="true" width="1.5" height=".5"></a-image> -->
+
+
+        
+        <a-plane position="1.155 2 7.495" rotation="0 180 0" width="3.8" height="4" opacity="1" scale=".3 .3 .3"
+                    material="src:#Wappen; alphaTest: 0.5;"
+                         ></a-plane>
+        
+      
+             
+           <a-entity position="-6.621 0 -12.180" >
+        <a-entity id="portrait3" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Wanderer_speaking_3; transparent: true; depthWrite:false;"
+                  scale= ".5 .5 .5"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="1.648 1.058 6.462"
+        rotation="0 60 0"> </a-entity>  
+   <!--    <a-image src="#Schatten" rotation="90 0 0" position=" 1.655 0.017 6.287" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="3.5 3.5 3.5" ></a-image>
+-->
+</a-entity>
+           
+      
+
+        
+         
+        
+        
+       <a-entity id="Glas_Tisch_Szene" position="-2.75 0 -0.415">
+                    
+
+      <a-entity id="Glas" position="-0.676 1.240 -5.2" scale=".19 .19 .19"
+                >
+
+          <a-entity position="1 0 0">
+                        <a-entity
+                        
+                    
+                        id="Ochsenkopfglas"
+                       gltf-model="#Glas_Modell"
+                       position="-1.041 -0.878 -3.400"
+                      rotation="0 200 0"
+                        scale="3.5 3.5 3.5"
+                      
+                     > </a-entity>
+                        </a-entity>
+          
+  
+         
+           
+       
+      
+        
+     </a-entity>
+ 
+  </a-entity>
+        
+
+        
+     
+       
+  
+          </a-panorama>
+
+        
+        
+        
+         <a-hotspot id="trigger5" billboard class="clickable " for="Wappen_Szene" to="Ofen_Szene" position="-1.219 1.151 1.028"
+                    event-set__position="_target: #Ofen_Szene; _event: click; animation__3.property: scale; animation__3.to: 1 1 1; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    event-set__position_2="_target: #Wappen_Szene; _event: click; animation__3.property: scale; animation__3.to: 0 0 0; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    event-set__enter_1="_target: #cameraRig; _event: click; animation.property: position; animation.to: -1.870 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_2="_target: #light1; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_3="_target: #light2; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_4="_target: #light3; _event: click; animation.property: light.intensity; animation.to: 0.48 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_5="_target: #light5; _event: click; animation.property: light.intensity; animation.to: 0.8 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_6="_target: #light6; _event: click; animation.property: light.intensity; animation.to: 0.3 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+
+
+                    >
+          <a-image class="clickable" src="#Sprungpunkt" material.transparent="true" width=".5" height=".5"
+                   event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__click="_target: #video1_poster; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 2000;"
+
+
+            ></a-image>
+        </a-hotspot>
+        
+   
+        
+        
+         <a-hotspot visible="false" id="trigger6" billboard class="clickable " for="Ofen_Szene" to="Glas_Szene" position="-3.796 1.151 -5.023"
+
+
+                   
+                    
+                    event-set__position="_target: #Glas_Szene; _event: click; animation__3.property: scale; animation__3.to: 1 1 1; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    event-set__position_2="_target: #Ofen_Szene; _event: click; animation__3.property: scale; animation__3.to: 0 0 0; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+               
+
+                    event-set__enter_5="_target: #light5; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_6="_target: #light6; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+
+                    
+                   event-set__enter_1="_target: #cameraRig; _event: click; animation.property: position; animation.to: -3.000 0 -4.236 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                   event-set__enter_2="_target: #light3; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+
+                   event-set__enter_3="_target: #light4; _event: click; animation.property: light.intensity; animation.to: 0.770 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+>
+          <a-image class="clickable" src="#Sprungpunkt" material.transparent="true" width=".5" height=".5"
+                   event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+
+               ></a-image>
+        </a-hotspot>
+        
+         <a-hotspot visible="false" id="trigger8" billboard class="clickable " for="Ofen_Szene" to="Wappen_Szene" position="1 1.5 3.5"
+                              event-set__position_3="_target: #trigger4; _event: click; animation__3.property: scale; animation__3.to: 0 0 0; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+
+                    event-set__position="_target: #Wappen_Szene; _event: click; animation__3.property: scale; animation__3.to: 1 1 1; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    event-set__position_2="_target: #Ofen_Szene; _event: click; animation__3.property: scale; animation__3.to: 0 0 0; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+event-set__enter_7="_target: #light5; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_6="_target: #light6; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                   
+                   event-set__enter_2="_target: #cameraRig; _event: click; animation.property: position; animation.to: 1 0 3.5 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                  event-set__enter_3="_target: #light3; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                  event-set__enter_4="_target: #light2; _event: click; animation.property: light.intensity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                  event-set__enter_5="_target: #light1; _event: click; animation.property: light.intensity; animation.to: 1 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+          <a-image class="clickable" src="#Sprungpunkt" material.transparent="true" width=".5" height=".5"
+                   event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+               ></a-image>
+        </a-hotspot>
+        
+         <a-hotspot visible="false" id="trigger7" billboard class="clickable " for="Glas_Szene" to="Ofen_Szene" position="-1.870 1.151 0"
+                       event-set__position="_target: #Ofen_Szene; _event: click; animation__3.property: scale; animation__3.to: 1 1 1; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    event-set__position_2="_target: #Glas_Szene; _event: click; animation__3.property: scale; animation__3.to: 0 0 0; animation__3.easing: easeInOutQuad; animation__3.dur: 0.00001"
+                    
+                event-set__enter_3="_target: #cameraRig; _event: click; animation.property: position; animation.to: -1.870 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                     event-set__enter_2="_target: #light4; _event: click; animation.property: light.intensity; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+event-set__enter_5="_target: #light5; _event: click; animation.property: light.intensity; animation.to: 0.8 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                    event-set__enter_6="_target: #light6; _event: click; animation.property: light.intensity; animation.to: 0.3 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+                   event-set__enter_1="_target: #light3; _event: click; animation.property: light.intensity; animation.to: 0.48 animation.easing: easeInOutQuad; animation.dur: 0.00001;">
+
+          <a-image class="clickable" src="#Sprungpunkt" material.transparent="true" width=".5" height=".5"
+                   event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 ></a-image>
+        </a-hotspot>
+        
+         
+      
+      
+     
+      
+     
+  
+        
+        
+
+
+              <a-light id="light1" light="angle:36; penumbra:0.3; type: spot; target:#portrait1; color: #fff; intensity: 1" position="2.056 1.29 3.183" rotation="45.000 90 0" ></a-light>
+              <a-entity id="light2" light="angle:23.220; penumbra:0.3; type: spot; target:#videoPlane; color: #fff; intensity: 1" position="2.056 3.432 3.183" rotation="45.000 90 0" ></a-entity>
+
+              <a-entity id="light3" light="angle:22.700; penumbra:0.3; type: spot; target:#Ofen; color: #fff; intensity: 0" position="-4.481 2.333 2.062" rotation="45.000 90 0" ></a-entity>
+              <a-entity id="light5" light="angle:11.440; penumbra:0.3; type: spot; target:#portrait2; color: #fff; intensity: 0" position=" -3.595 1.235 1.740" rotation="6.850 -90.000 0" ></a-entity>
+             <a-entity id="light6" light="angle:20; penumbra:0.3; type: spot; color: #fff; intensity: 0" position="-0.844 2.068 0.781" rotation="-1.150 90.000 89.620" ></a-entity>
+
+        
+        
+              <a-entity id="light4" light="angle:18; penumbra:0.3; type: spot; target:#portrait3; color: #fff; intensity: 0" position="-1.209 2.864 3.457" rotation="45.000 90 0" ></a-entity>
+
+        
+  
+              <a-entity id="" light="type: point; color: #888" position="1.000 1.57 1.125" intensity="0.5" ></a-entity>
+
+  
+         
+
+      </a-tour>
+
+    <a-entity id="cameraRig" position="1 0 3.5" rotation="0 -150 0" >   
+      <a-camera id="cam" fov="60" look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;"  position="0 1.8 0" wasd-controls="enabled:false;"  >
+   
+        <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">
+        </a-entity>
+      </a-camera>
+    </a-entity>
+      
+    </a-scene>
+
+    <script>
+
+      
+
+       // Prüfen, ob die Seite in einem iframe geladen ist
+  if (window.self !== window.top) {
+    // Wenn die Seite in einem iframe geladen ist, das switcher-nav-Element ausblenden
+    document.addEventListener("DOMContentLoaded", function() {
+      var switcherNav = document.querySelector('.switcher-nav');
+      if (switcherNav) {
+        switcherNav.style.display = 'none';
+      }
+    });
+  }
+
+
+    
+var inactivityDelay = 120000; // 2 Minuten bis zum Countdown-Start
+var countdownTime = 10; // 10 Sekunden Countdown
+var inactivityTimer;
+var countdownTimer;
+var timerTextEntity;
+
+function restartApplication() {
+    location.reload();
+}
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    clearInterval(countdownTimer);
+    timerTextEntity.setAttribute('text', 'value', '');
+    inactivityTimer = setTimeout(startCountdown, inactivityDelay);
+}
+
+function startCountdown() {
+    var remainingTime = countdownTime;
+    countdownTimer = setInterval(function() {
+        timerTextEntity.setAttribute('text', 'value', 'Weiter oder Neustart in: ' + remainingTime + ' sec');
+        remainingTime--;
+        if (remainingTime < 0) {
+            clearInterval(countdownTimer);
+            restartApplication();
+        }
+    }, 1000);
+}
+
+function setupInactivityTimer() {
+    timerTextEntity = document.getElementById('timerText');
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('mousedown', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('scroll', resetTimer);
+    resetTimer();
+}
+
+window.onload = function() {
+    // Button-Klick-Event hinzufügen, um das Skript zu starten
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', function() {
+        setupInactivityTimer();
+
+        // A-Frame-spezifische Ereignisse hinzufügen
+        var sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('click', resetTimer);
+        sceneEl.addEventListener('touchstart', resetTimer);
+
+        // A-Frame Raycaster Interaktionserkennung
+        var raycastTargets = document.querySelectorAll('.clickable');
+        raycastTargets.forEach(function (target) {
+            target.addEventListener('click', resetTimer);
+        });
+    });
+};
+    
+     
+      const playButton = document.querySelector('#playButton');
+     const stopButton = document.querySelector('#stopButton');
+     
+          // Globale Variable für das derzeit abgespielte Video
+     let currentVideo = null;
+     
+     function playVideo(videoId) {
+       const videoEl = document.querySelector(videoId);
+     
+     
+       if (currentVideo && currentVideo !== videoEl) {
+         currentVideo.pause();
+         currentVideo.currentTime = 0; 
+       }
+     
+       videoEl.muted = true; 
+       videoEl.play().then(() => {
+         videoEl.muted = false;
+         currentVideo = videoEl; 
+       }).catch((error) => {
+         console.error("Video konnte nicht abgespielt werden: ", error);
+       });
+     }
+     
+         
+         
+         
+     AFRAME.registerComponent('play-video-on-click', {
+       schema: {
+         videoId: { type: 'string' }
+       },
+       init: function () {
+         const videoId = this.data.videoId;
+         this.el.addEventListener('click', function () {
+           playVideo(videoId);
+         });
+         this.el.addEventListener('touchstart', function () {
+           playVideo(videoId);
+         });
+       }
+     });
+     
+     // Attach the component to the buttons with the respective video IDs
+     document.querySelector('#start-button').setAttribute('play-video-on-click', 'videoId: #Wanderer_speaking_1');
+     document.querySelector('#trigger5').setAttribute('play-video-on-click', 'videoId: #Wanderer_speaking_2');
+     document.querySelector('#trigger6').setAttribute('play-video-on-click', 'videoId: #Wanderer_speaking_3');
+     document.querySelector('#trigger7').setAttribute('play-video-on-click', 'videoId: #Wanderer_speaking_2');
+     document.querySelector('#trigger8').setAttribute('play-video-on-click', 'videoId: #Platzhalter');
+     
+         
+     
+     const trigger4 = document.querySelector('#start-button');
+         
+     const sub1 = document.querySelector('#Wanderer_subs_1');
+     const sub2 = document.querySelector('#Wanderer_subs_2');
+     const sub3 = document.querySelector('#Wanderer_subs_3');
+     const sub4 = document.querySelector('#Glasmacher_subs');
+         const sub5 = document.querySelector('#Platzhalter');
+     
+     
+         
+     // Helper function to show a specific video and hide others
+     function showVideo(videoToShow) {
+         const videos = [sub1, sub2, sub3, sub4, sub5];
+         videos.forEach(video => {
+             if (video === videoToShow) {
+                 video.classList.remove('hidden');
+                 video.classList.add('visible');
+                 video.currentTime = 0; // Ensure the video starts from the beginning
+             } else {
+                 video.classList.remove('visible');
+                 video.classList.add('hidden');
+             }
+         });
+     }
+     
+     // Helper function to hide a specific video
+     function hideVideo(videoToHide) {
+         videoToHide.classList.remove('visible');
+         videoToHide.classList.add('hidden');
+     }
+     
+     // Function to play video with specific start and end times
+     function playVideoWithRange(video, start, end) {
+         if (video) {
+             video.currentTime = start;
+             video.play();
+             video.ontimeupdate = function () {
+                 if (video.currentTime >= end) {
+                     video.pause();
+                     video.ontimeupdate = null; // Remove event listener
+                 }
+             };
+         }
+     }
+     
+     // Initialize videos to be hidden
+     window.addEventListener('load', () => {
+         [sub1, sub2, sub3, sub4, sub5].forEach(video => {
+             hideVideo(video);
+         });
+     });
+     
+     
+     
+     trigger4.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub1); // Show sub1 and hide others
+             sub1.play();
+         }, 0); // Delay in milliseconds
+     });
+     
+     trigger5.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub2); // Show sub2 and hide others
+             sub2.play();
+             sub4.pause();  
+         }, 0); // Delay in milliseconds
+     });
+     
+     trigger6.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub3); // Show sub3 and hide others
+             sub3.play();
+     
+         }, 0); // Delay in milliseconds
+     });
+     
+     trigger7.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub2); // Show sub2 and hide others
+             sub2.play();
+         }, 0); // Delay in milliseconds
+     });
+     
+     trigger8.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub5); // Show sub1 and hide others
+               sub5.play();
+     
+         }, 0); // Delay in milliseconds
+     });
+     
+     // Event listeners for buttons
+     playButton.addEventListener('click', () => {
+         setTimeout(() => {
+             showVideo(sub4); // Show sub4 and hide others
+             sub4.play();
+         }, 0); // Delay in milliseconds
+     });
+     
+     stopButton.addEventListener('click', () => {
+         setTimeout(() => {
+             hideVideo(sub4); // Hide sub4
+             sub4.pause();   // Use pause() to stop the video
+             sub4.currentTime = 0; // Optional: Reset video to the beginning
+         }, 0); // Delay in milliseconds
+     });
+         
+            function hideOverlay() {
+       document.getElementById("overlay").style.display = "none";
+     }
+     
+     
+     
+         document.getElementById('start-button').addEventListener('click', function() {
+         const video = document.querySelector('#Wanderer_speaking_1');
+         const poster = document.querySelector('#video1_poster');
+     
+         // Play the video
+         video.play().catch(error => console.error('Error playing video:', error));
+         
+         // Set the opacity of the poster to 0 with a duration of 2000ms
+         poster.setAttribute('animation', {
+             property: 'material.opacity',
+             to: '0',
+             dur: '1000'
+         });
+     });
+     
+     function stopVideo() {
+         const video = document.querySelector('#Wanderer_speaking_1');
+         
+         // Stop the video and reset the time
+         if (video) {
+             video.pause();
+             video.currentTime = 0;
+         }
+     }
+     
+     document.getElementById('playButton').addEventListener('click', stopVideo);
+         document.getElementById('trigger5').addEventListener('click', stopVideo);
+     document.getElementById('trigger8').addEventListener('click', stopVideo);
+     
+               document.getElementById('trigger8').addEventListener('click', function() {
+         // Make the overlay visible again
+         document.getElementById("overlay").style.display = "flex";
+         
+         // Reset the rotation of the cameraRig
+         const cameraRig = document.querySelector('#cameraRig');
+         if (cameraRig) {
+             cameraRig.setAttribute('rotation', '0 -150 0');
+         }
+     });
+     
+         
+     </script>
+  
+  </body>
+</html>

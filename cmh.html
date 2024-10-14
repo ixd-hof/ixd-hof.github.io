@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Tablet - Carl Magnus Hutschenreuther</title>
+    <link rel="stylesheet" type="text/css" href="./style_cmh.css">
+
+    
+    
+    <script src="js/aframe.min.js"></script>
+
+    <script src="js/aframe.extras.js"></script>
+    
+    <script src="panorama/helper.js"></script>
+    <script src="panorama/hotspot.js"></script>
+    <script src="panorama/panorama.js"></script>
+    <script src="panorama/tour.js"></script>
+     
+    <script src="js/script.js"></script>
+    
+     <script src="js/transparent-video-shader.js"></script>
+    <script src="js/event-set-component.js"></script>
+    <script src="js/billboard-look-component.js"></script>
+  
+  </head>
+  
+  <body>
+    
+     <div id="overlay">
+  <div id="hinweis-container">
+    <img id="nutzerhinweis" src="./img/Nutzerhinweis_Tablet.png" alt="Nutzerhinweis">
+    <img id="start-button" src="./img/Ueberspringen_Button.png" alt="Jetzt Starten" onclick="hideOverlay()">
+     </div>
+</div>
+
+<div class="switcher-nav">
+  <a href="index.html" class="go-to-index-button" id="indexButton">
+    Home
+  </a>    
+  <div class="switcher-nav-inner">
+      <a href="wanderer.html" class="arrow left-arrow">←</a>
+      <div class="footer-text">Carolus Magnus Hutschenreuther</div>
+      <a href="goethe.html" class="arrow right-arrow">→</a>
+  </div>
+</div>
+   
+    
+    
+      <div class="video-container">
+        <video id="CMH_subs_1" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_1_subs.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_1_subs.webm" type="video/webm" />
+      </video>  
+      
+      <video id="CMH_subs_2" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_2_subs.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_2_subs.webm" type="video/webm" />
+      </video>  
+      
+      <video id="CMH_subs_3" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_3_subs.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_3_subs.webm" type="video/webm" />
+      </video>  
+      
+      <video id="CMH_subs_4" crossorigin="anonymous" playsinline webkit-playsinline muted style="width: 0%; height: 0%;">
+          <!-- HEVC video for safari support -->
+          <source src="./videos/Platzhalter.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/Platzhalter.webm" type="video/webm" />
+      </video>
+        
+  
+    </div>
+    
+    <a-scene renderer="precision: mediump; highRefreshRate:false; colorManagement:true;" vr-mode-ui="enabled: false"
+         xr-mode-ui="enabled: false"
+             cursor="rayOrigin: mouse" loading-screen="dotsColor: white; backgroundColor: #A4BC49" reflection="directionalLight:a-light#dirlight;" >
+      
+      <!-- Preload assets like panoramas and content -->
+      <a-assets timeout="100000">
+        
+        <video id="CMH_speaking_1" crossorigin="anonymous" playsinline webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_1-1.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_1.webm" type="video/webm" />
+      </video>
+      
+      <video id="CMH_speaking_2" crossorigin="anonymous" playsinline webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_2-1.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_2.webm" type="video/webm" />
+      </video>
+      
+      <video id="CMH_speaking_3" crossorigin="anonymous" playsinline webkit-playsinline>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/CMH_3-1.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/CMH_3.webm" type="video/webm" />
+      </video>
+      
+      <video id="Malerinnen" crossorigin="anonymous" playsinline webkit-playsinline muted>
+          <!-- HEVC video for safari support -->
+          <source src="./videos/Malerinnen.mov" type="video/mp4;codecs=hvc1">
+          <!-- WEBM video for chrome and firefox -->
+          <source src="./videos/Malerinnen.webm" type="video/webm" />
+      </video>
+      
+      <img id="CMH_speaking_1_poster" src="./img/CMH_Poster.png" crossorigin="anonymous">
+      
+      <img id="Infotafel_CMH" src="./img/Infotafel_Denkmal.png" crossorigin="anonymous">
+      <img id="Urkunde_Info" src="./img/Urkunde_Info.png" crossorigin="anonymous">
+      <img id="Infotafel_Arbeiter" src="./img/Infotafel_Malerinnen.png" crossorigin="anonymous">
+      <img id="Sprungpunkt" src="./img/Sprungpunkt_footprint.png" crossorigin="anonymous">
+      
+      <img id="Denkmal" src="./img/Denkmal.jpg" crossorigin="anonymous">
+      <img id="Burg" src="./img/Burg.jpg" crossorigin="anonymous">
+      
+      <a-asset-item id="Framed_Fabrik" src="./models/Frame.glb" crossorigin="anonymous"></a-asset-item>
+      <a-asset-item id="Fabrik_Modell" src="./models/Fabrik.glb" crossorigin="anonymous"></a-asset-item>
+      <a-asset-item id="Denkmal_Modell" src="./models/Denkmal_bnw.glb" crossorigin="anonymous"></a-asset-item>
+      <a-asset-item id="Porzellan_Modell" src="./models/Porzellan_Geschirr_Artefakt.glb" crossorigin="anonymous"></a-asset-item>
+      
+      <img id="zurFabrik" src="./img/zuFabrik.png" crossorigin="anonymous">
+      <img id="zurBurg" src="./img/zuBurg.png" crossorigin="anonymous">
+      <img id="zumDenkmal" src="./img/zuDenkmal.png" crossorigin="anonymous">
+      
+      <img id="zurueckDenkmal" src="./img/Denkmal_zurueck.png" crossorigin="anonymous">
+      <img id="zurueckBurg" src="./img/Burg_zurueck.png" crossorigin="anonymous">
+      
+      <img id="Hinweis_Porzellan" src="./img/Hinweis_CMH_Tablet.png" crossorigin="anonymous">
+      <img id="Schatten" src="./img/Schatten.png" crossorigin="anonymous">
+      
+
+      </a-assets>
+
+      
+      <a-tour>
+        
+        <!-- Panorama nodes and content -->
+        <a-panorama id="Denkmal_Szene" src="#Denkmal" rotation="0 -290 0" visible="true">
+        <a-entity gltf-model="#Denkmal_Modell" scale="3 3 3" position="-1.231 0 7.611" rotation="0 -90 0"></a-entity>
+    
+          
+                <a-entity >
+        <a-entity id="portrait1" 
+        material="shader: transparent-video; alphaTest:0.5; src: #CMH_speaking_1; transparent: true; depthWrite:false;"
+                  scale= "1.3 1.3 1.3"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="1.936 0.502 4.491"
+        rotation="0 -160 0"> </a-entity>  
+       <a-image src="#Schatten" rotation="90 0 0" position="2.026 -2.580 4.915" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="5 5 5" ></a-image>
+                  
+        <a-entity id="video1_poster" 
+        material="src: #CMH_speaking_1_poster; alphaTest:0.5; transparent: true; shader:flat;"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8"
+                  scale="1.3 1.3 1.3"
+        position="1.932 0.502 4.479"
+                  rotation="0 -160 0"> </a-entity>           
+                  
+</a-entity>
+           
+        
+          
+         
+          <a-image billboard src="#Infotafel_CMH" material.transparent="true"  position="-5.526 1.7 3.195" alphatest= "0.5;" class="clickable"
+                 rotation="0 0 0" width="1" height="1" opacity="1" scale="5.5 5.5 5.5"> </a-image>
+          
+        </a-panorama>
+        
+         <a-panorama id="Burg_Szene" src="#Burg" rotation="0 -80 0" visible="false" scale="0 0 0">
+    
+           <a-image billboard id="Info" src="#Urkunde_Info" material.transparent="true" alphatest= "0.5;" class="clickable"
+                 rotation="0 0 0" width="1" height="1" opacity="1" scale="10 10 10" position="2.961 1.8 -8" ></a-image>
+          
+           
+                <a-entity id="portrait2" 
+        material="shader: transparent-video; alphaTest:0.5; src: #CMH_speaking_2; transparent: true; depthWrite:false;"
+                  scale= ".9 .9 .9"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="-0.521 1 4.118"
+        rotation="0 180 0"> </a-entity>  
+       <a-image src="#Schatten" rotation="90 0 0" position="-0.450 -0.852 4.282" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="7 7 7" ></a-image>
+           
+        </a-panorama>
+        
+        
+        <a-panorama id="Fabrik_Szene" src="#" rotation="0 -90 0" visible="false"  scale="0 0 0" >
+          
+        <a-entity position="-5.5 0 1.3" >
+          <a-entity gltf-model="#Fabrik_Modell" scale="1 1 1" position="-1.429 0 0" rotation="0 0 0"  ></a-entity>
+                    
+          <a-entity gltf-model="#Framed_Fabrik" scale="3 3 3" position="8.589 2.2 4.322" rotation="0 -90 0"></a-entity>
+          
+ 
+
+  <a-entity position="2.077 0 1.306" rotation="0 180 0">
+     
+
+         <a-entity id="video-entity" 
+        material="shader: transparent-video; alphaTest:0.5; src: #Malerinnen; transparent: true;"
+                  scale= "0.7 0.7 0.7"
+        geometry="primitive: plane;
+                  width: 1.690;
+                  height: 1.260;"
+        position="-0.608 1.713 0.434"
+        rotation="0 130 0"> </a-entity> 
+    
+         <a-image src="#Infotafel_Arbeiter" material.transparent="true" alphatest= "0.5;" class="clickable"
+                 rotation="0 130 0" width="1" height="1" opacity="1" scale="1.500 1.500 1.500" position="-0.640 1.890 0.440" ></a-image>
+          
+      
+          
+                          <a-entity id="portrait3" 
+        material="shader: transparent-video; alphaTest:0.5; src: #CMH_speaking_3; transparent: true; depthWrite:false;"
+                  scale= "0.500 0.500 0.500"
+        geometry="primitive: plane;
+                  width: 4.8;
+                  height: 4.8;"
+        position="0.579 1.045 1.648"
+        rotation="0 160 0"> </a-entity>  
+       <a-image src="#Schatten" rotation="90 0 0" position="0.530 0.030 1.810" material="alphaTest:0; color: #000000" material.transparent="true" width=".5" height=".5" scale="3.5 3.5 3.5" ></a-image>
+            </a-entity>
+          
+          </a-entity>
+          
+             <a-entity position="1.313 0.945 4.506" rotation="0 45 0" opacity="0" scale="2 2 2" width="0.1" depth="0.2" height="0.03" > 
+               
+           <!-- <a-entity gltf-model="#Porzellan_Modell" scale="0.600 0.600 0.600" position="0 0 0" rotation="0 0 0"></a-entity>
+        -->  
+               </a-entity>
+          
+
+             
+          
+        </a-panorama>
+        
+        
+           <a-panorama id="Fabrik_Porzellan_Szene" src="#" rotation="0 -90 0" visible="false" position="-0.339 0 -0.673" scale="0 0 0" > <!-- scale=".9 .9 .9 " -->
+          
+        <a-entity position="-5.5 0 -3.570" >
+          <a-entity gltf-model="#Fabrik_Modell" scale="1 1 1" position="-1.429 0 0" rotation="0 0 0"></a-entity>
+                    
+          <a-entity id="Rahmen" class="clickable" gltf-model="#Framed_Fabrik" scale="3 3 3" position="8.581 2.2 4.990" rotation="0 -90 0"
+                    event-set__enter="_target: #Rahmen; _event: mouseenter; animation.property: position; dir: alternate; animation.to: 6.226 1.6 4.387 animation.easing: easeInOutQuad; animation.dur: 2000 ;"
+                    event-set__enter_2="_target: #Rahmen; _event: mouseleave; animation.property: position; dir: alternate;  animation.to: 8.581 2.2 4.990 animation.easing: easeInOutQuad; animation.dur: 1000;"  
+                    ></a-entity>
+          
+
+
+        
+
+          
+        
+    
+
+          
+         
+            </a-entity>
+             
+        
+          
+              <a-entity id="Porzellan" class="clickable" color="#AA0000" position="1.313 0.945 -0.370" rotation="0 120 0" opacity="0" scale="2 2 2" width="0.1" depth="0.2" height="0.03"
+                    event-set__enter="_target: #Porzellan; _event: mouseenter; animation.property: position; dir: alternate; animation.to: 0.4 1.55 -0.370 animation.easing: easeInOutQuad; animation.dur:2000 ;"
+                    event-set__enter_2="_target: #Porzellan; _event: mouseleave; animation.property: position; dir: alternate;  animation.to: 1.313 0.945 -0.370 animation.easing: easeInOutQuad; animation.dur: 1000;"   
+                        event-set__enter_rotation="_target: #Porzellan; _event: mouseenter; animation__rotation.property: rotation; dir: alternate; animation__rotation.to: 0 45000 0; loop:true; animation__rotation.easing: easeInOutQuad; animation__rotation.dur: 300000;"
+                     event-set__leave_rotation="_target: #Porzellan; _event: mouseleave; animation__rotation.property: rotation; dir: alternate; animation__rotation.to: 0 120 0; animation__rotation.easing: easeInOutQuad; animation__rotation.dur: 1000;"
+                        > 
+               
+              <a-entity gltf-model="#Porzellan_Modell" scale="0.600 0.600 0.600" position="0 0 0" rotation="0 0 0"></a-entity> 
+               </a-entity> 
+          
+              <a-image billboard src="#Hinweis_Porzellan" scale="0.8 0.8 0.8" rotation="0 90 0" position=" 2.060 1.4 -0.370" material.transparent="true" width="1" height=".5"></a-image>
+
+             
+        </a-panorama>
+        
+        
+        <!-- Links between panoramas -->
+        <a-hotspot id="trigger2"  billboard class="clickable" for="Denkmal_Szene" to="Burg_Szene" position="-1.221 1.5 -3.817" 
+                  event-set__click="_target: #trigger1; _event: click; animation.property: scale; dir: alternate; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00001;"
+>
+           <a-image src="#zurBurg" material.transparent="true" width="3" height="1.5" class="clickable"
+                    event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                    event-set__enter2="_target: #cameraRig; _event: click; animation.property: rotation; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                      event-set__click="_target: #video1_poster; _event: click; animation.property: material.opacity; dir: alternate; animation.to: 0 animation.easing: easeInOutQuad; animation.dur: 2000;"
+></a-image>
+
+          </a-hotspot>
+          
+          <a-hotspot id="trigger3" billboard class="clickable" for="Burg_Szene" to="Fabrik_Szene" position="-0.056 1.8 3.081" rotation="0 0 0" visible="false" scale="0 0 0" 
+                   >
+            <a-image id="Malervideo" src="#zurFabrik" material.transparent="true" width="2" height="1" class="clickable"
+                     event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__enter_2="_target: #cameraRig; _event: click; animation.property: position; animation.to: -3.5 0 -4.4 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+              > </a-image></a-hotspot>
+
+           <a-hotspot id="trigger7" billboard class="clickable" for="Burg_Szene" to="Denkmal_Szene" position="-0.308 2.2 -3.391" rotation="0 0 0" visible="false" scale="0 0 0">
+            <a-image src="#zurueckDenkmal" material.transparent="true" width="2" height="1" class="clickable"
+                     event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                     ></a-image>
+        </a-hotspot>
+        
+        
+        
+      
+        <a-hotspot id="trigger5" billboard class="clickable" for="Fabrik_Szene" to="Burg_Szene" position="-2.832 1.904 -8.313" rotation="0 0 0" scale="0 0 0" visible="false"
+
+>
+            <a-image src="#zurueckBurg" material.transparent="true" width="2" height="1" class="clickable"
+                     event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__enter2="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                 ></a-image>
+        </a-hotspot>
+        
+        
+        
+              <a-hotspot id="trigger6"  billboard class="clickable" for="Fabrik_Porzellan_Szene" to="Fabrik_Szene" position="1 1 -3" rotation="0 0 0" scale="0 0 0" visible="false"
+                        event-set__enter_1="_target: #cameraRig; _event: click; animation.property: position; animation.to: -3.5 0 -4.4 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                   event-set__enter3="_target: #Porzellan; _event: click; animation.property: position; animation.to: 1.313 0.945 -0.370 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+
+
+>            <a-image src="#Sprungpunkt" material.transparent="true" width=".5" height=".5" class="clickable" id="Malervideo_2" 
+                    event-set__enter3="_target: #Porzellan; _event: click; animation.property: rotation; animation.to: 0 45 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                     event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"
+                 event-set__enter2="_target: #Tische_Sprungpunkt; _event: click; animation.property: scale; animation.to: 0 0 0 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+                      event-set__click="_target: #vidEl; _event: click; _target: #vidEl; play:;"></a-image>
+        </a-hotspot>
+        
+        
+         <a-hotspot id="trigger4" billboard class="clickable" for="Fabrik_Szene" to="Fabrik_Porzellan_Szene" position=" -4.314 1 -1.539" rotation="0 0 0" scale="0 0 0" visible="false"
+           event-set__enter="_target: #cameraRig; _event: click; animation.property: position; animation.to: 0 0 -0.5 animation.easing: easeInOutQuad; animation.dur: 0.00000001;"
+>
+            <a-image src="#Sprungpunkt" material.transparent="true" width=".5" height=".5" class="clickable"
+                     event-set__enter="_event: mouseleave; opacity: 1;"
+                 event-set__leave="_event: mouseenter; opacity: .5; delay:2000;"></a-image>
+        </a-hotspot>
+        
+    
+        
+  
+  
+        
+
+        
+        
+        
+        
+        
+        
+        <a-entity light="type: ambient; color: #888; intensity: 0.4" position="1 1 1" ></a-entity>
+      <a-entity light="type: directional; color: #fff; intensity: 0.980" position="-23.095 10.472 -6.153" rotation="-45.000 -90 0" ></a-entity>
+      <a-entity light="type: directional; color: #fff; intensity: 0.980" position="46.248 10.472 -6.153" rotation="45.000 90 0" ></a-entity>
+
+      <a-entity light="type: point; color: #888; intensity: 0.4 " position="-2.876 1.522 -3.965" ></a-entity>
+
+         
+         
+         
+      </a-tour>
+
+         <!-- camera rig -->
+      <a-entity id="cameraRig" position="0 0 0" rotation="0 -120 0"  > 
+        
+       <a-entity id="cam" position="0 1.65 0" camera   fov="60" far="10000" near="0.005" 
+look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;" 
+>
+
+        <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">
+        </a-entity>
+  
+       </a-entity>
+        
+        
+      </a-entity>
+      
+      
+    </a-scene>
+    
+      <script>
+
+
+        
+
+         // Prüfen, ob die Seite in einem iframe geladen ist
+  if (window.self !== window.top) {
+    // Wenn die Seite in einem iframe geladen ist, das switcher-nav-Element ausblenden
+    document.addEventListener("DOMContentLoaded", function() {
+      var switcherNav = document.querySelector('.switcher-nav');
+      if (switcherNav) {
+        switcherNav.style.display = 'none';
+      }
+    });
+  }
+
+
+
+var inactivityDelay = 120000; // 2 Minuten bis zum Countdown-Start
+var countdownTime = 10; // 10 Sekunden Countdown
+var inactivityTimer;
+var countdownTimer;
+var timerTextEntity;
+
+function restartApplication() {
+    location.reload();
+}
+
+function resetTimer() {
+    clearTimeout(inactivityTimer);
+    clearInterval(countdownTimer);
+    timerTextEntity.setAttribute('text', 'value', '');
+    inactivityTimer = setTimeout(startCountdown, inactivityDelay);
+}
+
+function startCountdown() {
+    var remainingTime = countdownTime;
+    countdownTimer = setInterval(function() {
+        timerTextEntity.setAttribute('text', 'value', 'Weiter oder Neustart in: ' + remainingTime + ' sec');
+        remainingTime--;
+        if (remainingTime < 0) {
+            clearInterval(countdownTimer);
+            restartApplication();
+        }
+    }, 1000);
+}
+
+function setupInactivityTimer() {
+    timerTextEntity = document.getElementById('timerText');
+    document.addEventListener('mousemove', resetTimer);
+    document.addEventListener('mousedown', resetTimer);
+    document.addEventListener('keypress', resetTimer);
+    document.addEventListener('touchstart', resetTimer);
+    document.addEventListener('scroll', resetTimer);
+    resetTimer();
+}
+
+window.onload = function() {
+    // Button-Klick-Event hinzufügen, um das Skript zu starten
+    var startButton = document.getElementById('start-button');
+    startButton.addEventListener('click', function() {
+        setupInactivityTimer();
+
+        // A-Frame-spezifische Ereignisse hinzufügen
+        var sceneEl = document.querySelector('a-scene');
+        sceneEl.addEventListener('click', resetTimer);
+        sceneEl.addEventListener('touchstart', resetTimer);
+
+        // A-Frame Raycaster Interaktionserkennung
+        var raycastTargets = document.querySelectorAll('.clickable');
+        raycastTargets.forEach(function (target) {
+            target.addEventListener('click', resetTimer);
+        });
+    });
+};
+  
+         
+        // Globale Variable für das derzeit abgespielte Video
+let currentVideo = null;
+
+function playVideo(videoId) {
+  const videoEl = document.querySelector(videoId);
+
+
+  if (currentVideo && currentVideo !== videoEl) {
+    currentVideo.pause();
+    currentVideo.currentTime = 0; 
+  }
+
+  videoEl.muted = true; 
+  videoEl.play().then(() => {
+    videoEl.muted = false;
+    currentVideo = videoEl; 
+  }).catch((error) => {
+    console.error("Video konnte nicht abgespielt werden: ", error);
+  });
+}
+
+        
+AFRAME.registerComponent('play-video-on-click', {
+  schema: {
+    videoId: { type: 'string' }
+  },
+  init: function () {
+    const videoId = this.data.videoId;
+    this.el.addEventListener('click', function () {
+      playVideo(videoId);
+    });
+    this.el.addEventListener('click', function () {
+      playVideo(videoId);
+    });
+  }
+});
+
+// Attach the component to the buttons with the respective video IDs
+document.querySelector('#start-button').setAttribute('play-video-on-click', 'videoId: #CMH_speaking_1');
+document.querySelector('#trigger2').setAttribute('play-video-on-click', 'videoId: #CMH_speaking_2');
+document.querySelector('#trigger3').setAttribute('play-video-on-click', 'videoId: #CMH_speaking_3');
+document.querySelector('#trigger4').setAttribute('play-video-on-click', 'videoId: #CMH_subs_4');
+
+
+document.querySelector('#trigger5').setAttribute('play-video-on-click', 'videoId: #CMH_speaking_2');
+document.querySelector('#trigger6').setAttribute('play-video-on-click', 'videoId: #CMH_speaking_3');
+document.querySelector('#trigger7').setAttribute('play-video-on-click', 'videoId: #CMH_subs_4');
+
+document.querySelector('#Malervideo').setAttribute('play-video-on-click', 'videoId: #Malerinnen');
+        
+document.querySelector('#Malervideo_2').setAttribute('play-video-on-click', 'videoId: #Malerinnen');
+
+
+const trigger1 = document.querySelector('#start-button');
+
+const sub1 = document.querySelector('#CMH_subs_1');
+const sub2 = document.querySelector('#CMH_subs_2');
+const sub3 = document.querySelector('#CMH_subs_3');
+const sub4 = document.querySelector('#CMH_subs_4');
+        
+
+    
+// Helper function to show a specific video and hide others
+function showVideo(videoToShow) {
+    const videos = [sub1, sub2, sub3, sub4];
+    videos.forEach(video => {
+        if (video === videoToShow) {
+            video.classList.remove('hidden');
+            video.classList.add('visible');
+            video.currentTime = 0; // Ensure the video starts from the beginning
+        } else {
+            video.classList.remove('visible');
+            video.classList.add('hidden');
+        }
+    });
+}
+
+// Helper function to hide a specific video
+function hideVideo(videoToHide) {
+    videovideoToHide.currentTime = 0;
+  videoToHide.classList.remove('visible');
+    videoToHide.classList.add('hidden');
+  
+}
+
+// Initialize videos to be hidden
+window.addEventListener('load', () => {
+    [sub1, sub2, sub3, sub4].forEach(video => {
+        hideVideo(video);
+    });
+});
+
+// Event listeners for triggers
+trigger1.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub1); // Show sub1 and hide others
+        sub1.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger2.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub2 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger3.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub3 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+
+trigger4.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub4); // Show sub4 and hide others
+        sub4.play();
+    }, 0); // Delay in milliseconds
+});
+      
+      trigger5.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub2); // Show sub4 and hide others
+        sub2.play();
+    }, 0); // Delay in milliseconds
+});
+      
+        trigger6.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub3); // Show sub4 and hide others
+        sub3.play();
+    }, 0); // Delay in milliseconds
+});
+    
+      
+       trigger7.addEventListener('click', () => {
+    setTimeout(() => {
+        showVideo(sub4); // Show sub4 and hide others
+        sub4.play();
+    }, 0); // Delay in milliseconds
+});
+        
+             function hideOverlay() {
+  document.getElementById("overlay").style.display = "none";
+}
+        
+           document.getElementById('start-button').addEventListener('click', function() {
+    const video = document.querySelector('#CMH_speaking_1');
+    const poster = document.querySelector('#video1_poster');
+
+    // Play the video
+    video.play().catch(error => console.error('Error playing video:', error));
+    
+    // Set the opacity of the poster to 0 with a duration of 2000ms
+    poster.setAttribute('animation', {
+        property: 'material.opacity',
+        to: '0',
+        dur: '1000'
+    });
+});
+
+function stopVideo() {
+    const video = document.querySelector('#CMH_speaking_1');
+    
+    // Stop the video and reset the time
+    if (video) {
+        video.pause();
+        video.currentTime = 0;
+    }
+}
+
+document.getElementById('trigger2').addEventListener('click', stopVideo);
+
+
+          document.getElementById('trigger7').addEventListener('click', function() {
+    // Make the overlay visible again
+    document.getElementById("overlay").style.display = "flex";
+    
+    // Reset the rotation of the cameraRig
+    const cameraRig = document.querySelector('#cameraRig');
+    if (cameraRig) {
+        cameraRig.setAttribute('rotation', '0 -120 0');
+    }
+});
+
+
+      
+    </script>
+    
+  </body>
+</html>
