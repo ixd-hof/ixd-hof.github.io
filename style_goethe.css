@@ -1,0 +1,198 @@
+.hidden {
+    display: none; /* Versteckt das Element */
+}
+
+.visible {
+    display: block; /* Zeigt das Element an */
+}
+
+
+.video-container {
+    position: fixed; /* Fixiert den Container relativ zum Viewport */
+    top: 20%; /* Setzt den Container am unteren Rand des Viewports */
+    left: 20%; 
+    right: 20%;
+  /* Positioniert den Container am linken Rand des Viewports */
+    width: 60vw; /* Volle Breite des Viewports */
+    height: auto; /* Höhe automatisch anpassen, um das Video anzupassen */
+    z-index: 2; /* Stellt sicher, dass der Container über anderen Elementen liegt */
+    display: flex; /* Verwendet Flexbox für die Ausrichtung des Videos */
+    justify-content: center; /* Zentriert das Video horizontal */
+    align-items: center; /* Zentriert das Video vertikal */
+    pointer-events: none; /* Verhindert, dass der Container Mausklicks abfängt */
+    overflow: hidden; /* Verhindert, dass Überlauf-Content angezeigt wird */
+   /* border: 1px solid white;  /*Fügt dem Container einen weißen Rand hinzu */
+}
+
+video {
+    width: 100%; /* Setzt die Breite des Videos auf die Breite des Containers */
+    height: auto; /* Beibehaltung des Seitenverhältnisses des Videos */
+
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Halbtransparenter Hintergrund */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Sicherstellen, dass es über der A-Frame-Szene liegt */
+}
+
+#hinweis-container {
+  position: relative;
+  text-align: center;
+}
+
+#nutzerhinweis {
+  width: 50%; /* Bildgröße anpassen */
+}
+
+#start-button {
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Zentriert das Bild horizontal und vertikal */
+  cursor: pointer;
+  width: 18%; /* Bildgröße anpassen */
+  transition: opacity 0.3s ease; /* Weicher Übergang für die Opacity */
+  opacity: 1; /* Anfangs volle Opazität */
+}
+
+#start-button:hover {
+  opacity: 0.75; /* Reduzierte Opazität bei Hover */
+}
+
+
+
+/* Das Haupt-Container-Design für den Streifen */
+.switcher-nav {
+  position: fixed;
+  z-index: 1001; /* Stellt sicher, dass der Container über anderen Elementen liegt */
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #fff; /* Hintergrundfarbe des Streifens auf weiß gesetzt */
+  display: flex;
+  justify-content: space-between; /* Setzt die Pfeile an die Seiten */
+  align-items: center;
+  padding: 0 0px;
+  color: #333; /* Textfarbe geändert für besseren Kontrast auf weißem Hintergrund */
+  font-family: 'Fira Sans', sans-serif; /* Schriftart auf Fira Sans gesetzt */
+  font-weight: 600;
+}
+
+/* Der Button-Design */
+.go-to-index-button {
+  position: absolute; /* Absolut positioniert im Container */
+  left: 10px; /* Direkt am linken Rand */
+  padding: 10px 20px; /* Polsterung im Button */
+  background-color: white; /* Hintergrundfarbe des Buttons auf weiß gesetzt */
+  color: #333; /* Textfarbe auf Blau gesetzt */
+  text-decoration: none; /* Entfernt die Unterstreichung */
+  border-radius: 5px; /* Abgerundete Ecken */
+  font-size: 16px;   /* Schriftgröße */
+  font-weight: 600;  /* Schrift fett (semi-bold) */
+  transition: background-color 0.3s ease; /* Sanfter Übergang für Hover */
+  font-family: 'Fira Sans', sans-serif; /* Schriftart auf Fira Sans gesetzt */
+  z-index: 1002; /* Sicherstellen, dass der Button über dem restlichen Inhalt liegt */
+}
+
+/* Hover-Effekt */
+.go-to-index-button:hover {
+  color: #6db529; /* Farbe ändern, wenn der Benutzer darüber fährt */
+}
+
+/* Der innere Bereich mit den Pfeilen und dem Text */
+.switcher-nav-inner {
+  display: flex;
+  justify-content: space-between; /* Setzt die Pfeile an die Seiten */
+  align-items: center;
+  width: 100%;
+  padding: 0 40px; /* Padding innerhalb des Inhaltsbereichs */
+}
+
+/* Pfeil-Design */
+.arrow {
+  text-decoration: none;
+  font-size: 24px;
+  color: #333; /* Pfeilfarbe angepasst an den neuen Hintergrund */
+  padding: 0 10px;
+}
+
+/* Hover-Effekt für Pfeile */
+.arrow:hover {
+  color: #6db529; /* Farbe beim Überfahren mit der Maus */
+}
+
+/* Text in der Mitte */
+.footer-text {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.right-arrow {
+  padding: 0 15%;
+}
+
+.left-arrow {
+  padding: 0 15%;
+}
+
+/* **Media Queries** für kleinere Bildschirme (z.B. mobile Geräte) */
+
+/* Für Smartphones im Hochformat (bis 480px) */
+@media (max-width: 480px) {
+  #hinweis-container {
+    width: 100%; /* Container fast auf die ganze Breite der Seite bei kleinen Geräten */
+  }
+
+  #nutzerhinweis {
+    width: 90%; /* Bildgröße vergrößern für mobile Geräte */
+  }
+
+  #start-button {
+    width: 40%; /* Start-Button größer, da der Bildschirm kleiner ist */
+    top: 90%; /* Button weiter unten für kleinere Bildschirme */
+  }
+}
+
+/* Für Tablets im Hochformat (bis 768px) */
+@media (max-width: 768px) {
+  #hinweis-container {
+    width: 100%; /* Container für Tablets fast die ganze Breite */
+    max-width: 100%; /* Maximale Breite auf 95% beschränkt */
+  }
+
+  #nutzerhinweis {
+    width: 90%; /* Bildgröße auf Tablets etwas größer, um es besser sichtbar zu machen */
+    max-width: 90%; /* Maximale Bildgröße bei größeren Tablets, um nicht zu groß zu werden */
+  }
+
+  #start-button {
+    width: 40%; /* Button auf Tablets vergrößert, damit er gut sichtbar ist */
+    top: 85%; /* Button bleibt in der unteren Mitte */
+  }
+}
+
+/* Für größere Bildschirme (Desktops) ab 1024px */
+@media (min-width: 1024px) {
+  #hinweis-container {
+    width: 100%; /* Container für größere Bildschirme, damit er nicht zu breit ist */
+    max-width: 100%; /* Maximale Breite des Containers auf größeren Bildschirmen */
+  }
+
+  #nutzerhinweis {
+    width: 80%; /* Bildgröße bei Desktops auf 80% des Containers */
+    max-width: 800px; /* Maximale Breite des Bildes bei großen Bildschirmen */
+  }
+
+  #start-button {
+    width: 20%; /* Start-Button bleibt 20% der Container-Breite */
+    top: 85%; /* Position des Buttons bleibt gleich */
+  }
+}
