@@ -35,6 +35,17 @@
   --6db529: var(--steel-blue);
 }
 
+.aframe-video
+{
+padding-top: 15%;
+}
+
+.wann, .luise, .wanderer, .humboldt, .hutschi, .goethe {
+  padding-top: 25%;
+}
+
+
+
 .w-layout-blockcontainer {
   max-width: 940px;
   margin-left: auto;
