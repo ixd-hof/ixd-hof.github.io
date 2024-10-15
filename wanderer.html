@@ -20,7 +20,8 @@
      <script src="js/transparent-video-shader.js"></script>
     <script src="js/event-set-component.js"></script>
     <script src="js/billboard-look-component.js"></script>
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
   </head>
   
       
@@ -35,8 +36,8 @@
 
 <div class="switcher-nav">
   <a href="index.html" class="go-to-index-button" id="indexButton">
-    Home
-  </a>    
+    <i class="fas fa-home"></i> 
+  </a>  
   <div class="switcher-nav-inner">
       <a href="wann.html" class="arrow left-arrow">←</a>
       <div class="footer-text">Johann Matthäus Wanderer</div>
@@ -593,7 +594,8 @@ event-set__enter_5="_target: #light5; _event: click; animation.property: light.i
 
       </a-tour>
 
-    <a-entity id="cameraRig" position="1 0 3.5" rotation="0 -150 0" >   
+    <a-entity id="cameraRig" position="1 0 3.5" rotation="-15 -170 0" 
+    >   
       <a-camera id="cam" fov="60" look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;"  position="0 1.8 0" wasd-controls="enabled:false;"  >
    
         <a-entity id="timerText" position="0 0.15 -1.5" text="value: ; color: white; align: center; width: 3;">

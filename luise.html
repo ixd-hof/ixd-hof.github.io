@@ -26,7 +26,8 @@
 
     <script src="js/event-set-component.js"></script>
     <script src="js/billboard-look-component.js"></script>
-  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
   </head>
   
@@ -41,8 +42,8 @@
     
     <div class="switcher-nav">
       <a href="index.html" class="go-to-index-button" id="indexButton">
-        Home
-      </a>    
+        <i class="fas fa-home"></i> 
+      </a> 
       <div class="switcher-nav-inner">
         <a href="humboldt.html" class="arrow left-arrow">←</a>
         <div class="footer-text">Luise von Preußen</div>
@@ -378,7 +379,8 @@ cursor="rayOrigin: mouse" loading-screen="dotsColor: white; backgroundColor: #A4
      
   
        <!-- camera rig -->
-      <a-entity id="rig" position="0 0 0" rotation="0 240 0"  >
+      <a-entity id="rig" position="0 0 0" rotation="0 240 0" 
+      >
        <a-entity id="cam" position="0 1.5 0" camera 
        look-controls="enabled: true; touchEnabled: false; mouseEnabled: true; magicWindowTrackingEnabled: true;" 
        fov="50"  >

@@ -118,8 +118,8 @@ video {
 /* Pfeil-Design */
 .arrow {
   text-decoration: none;
-  font-size: 24px;
-  color: #333; /* Pfeilfarbe angepasst an den neuen Hintergrund */
+  font-size: 30px;
+    color: #333; /* Pfeilfarbe angepasst an den neuen Hintergrund */
   padding: 0 10px;
 
 }
@@ -136,13 +136,13 @@ video {
 }
 
 .right-arrow {
-  padding: 0 7%;
- 
+  padding: 0 0 0 15%;
+  z-index: 10005;
 }
 
-
 .left-arrow {
-  padding: 0 7%;
+  padding: 0 0 0 15%;
+  z-index: 10005;
 }
 
 
@@ -164,6 +164,17 @@ video {
     right: 0%;
     width: 100vw; /* Vergrößert die Breite auf fast den gesamten Bildschirm */
       height: auto; /* Auch hier bleibt die Höhe automatisch */
+  }
+}
+
+/* Media Query für Landscape-Modus auf Smartphones */
+@media only screen and (max-width: 768px) and (orientation: landscape) {
+  .video-container {
+      top: 10%; /* Etwas näher am oberen Rand im Landscape-Modus */
+      left: 5%;
+      right: 5%;
+      width: 80vw; /* Reduziert die Breite etwas im Landscape-Modus */
+      height: auto; /* Beibehaltung der automatischen Höhe */
   }
 }
 
@@ -215,6 +226,7 @@ video {
   #nutzerhinweis {
     width: 80%; /* Bildgröße bei Desktops auf 80% des Containers */
     max-width: 800px; /* Maximale Breite des Bildes bei großen Bildschirmen */
+    content: url('./img/Nutzerhinweis_Desktop.png');
   }
 
   #start-button {
