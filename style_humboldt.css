@@ -7,6 +7,7 @@
 }
 
 
+
 .video-container {
     position: fixed; /* Fixiert den Container relativ zum Viewport */
     top: 30%; /* Setzt den Container am unteren Rand des Viewports */
@@ -67,8 +68,6 @@ video {
   opacity: 0.75; /* Reduzierte Opazität bei Hover */
 }
 
-
-
 /* Das Haupt-Container-Design für den Streifen */
 .switcher-nav {
   position: fixed;
@@ -107,14 +106,14 @@ video {
   color: #6db529; /* Farbe ändern, wenn der Benutzer darüber fährt */
 }
 
-/* Der innere Bereich mit den Pfeilen und dem Text */
 .switcher-nav-inner {
   display: flex;
-  justify-content: space-between; /* Setzt die Pfeile an die Seiten */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 0 40px; /* Padding innerhalb des Inhaltsbereichs */
 }
+
 
 /* Pfeil-Design */
 .arrow {
@@ -122,6 +121,7 @@ video {
   font-size: 24px;
   color: #333; /* Pfeilfarbe angepasst an den neuen Hintergrund */
   padding: 0 10px;
+
 }
 
 /* Hover-Effekt für Pfeile */
@@ -136,12 +136,38 @@ video {
 }
 
 .right-arrow {
-  padding: 0 15%;
+  padding: 0 7%;
+ 
 }
 
+
 .left-arrow {
-  padding: 0 15%;
+  padding: 0 7%;
 }
+
+
+/* Media Queries für mobile Geräte */
+@media only screen and (max-width: 768px) {
+  .video-container {
+      top: 45%; /* Verschiebt den Container weiter nach oben für kleinere Bildschirme */
+      left: 0%;
+      right: 0%;
+      width: 100vw; /* Vergrößert die Breite auf fast den gesamten Bildschirm */
+      height: auto; /* Beibehaltung der automatischen Höhe */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .video-container {
+    top: 45%; /* Verschiebt den Container weiter nach oben für kleinere Bildschirme */
+    left: 0%;
+    right: 0%;
+    width: 100vw; /* Vergrößert die Breite auf fast den gesamten Bildschirm */
+      height: auto; /* Auch hier bleibt die Höhe automatisch */
+  }
+}
+
+
 
 /* **Media Queries** für kleinere Bildschirme (z.B. mobile Geräte) */
 
