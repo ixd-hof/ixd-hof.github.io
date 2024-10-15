@@ -198,3 +198,23 @@ video {
   }
 }
 
+/* Media Queries für mobile Geräte */
+@media only screen and (max-width: 768px) {
+  .video-container {
+    top: 50%; /* Verschiebt den Container weiter nach oben für kleinere Bildschirme */
+    left: -10%;
+    right: 0%;
+    width: 120vw; /* Vergrößert die Breite auf fast den gesamten Bildschirm */
+      height: auto; /* Auch hier bleibt die Höhe automatisch */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .video-container {
+    top: 50%; /* Verschiebt den Container weiter nach oben für kleinere Bildschirme */
+    left: -10%;
+    right: 0%;
+    width: 120vw; /* Vergrößert die Breite auf fast den gesamten Bildschirm */
+      height: auto; /* Auch hier bleibt die Höhe automatisch */
+  }
+}
