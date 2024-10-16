@@ -37,12 +37,23 @@
 
 .aframe-video
 {
-padding-top: 15%;
+padding-top: 5%;
 }
 
+
+
+@media (max-width: 768px) {
 .wann, .luise, .wanderer, .humboldt, .hutschi, .goethe {
   padding-top: 25%;
 }
+
+.aframe-video 
+{
+  height: 45vh !important;
+  margin-top: 10%;
+}
+}
+
 
 
 
