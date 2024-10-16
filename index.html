@@ -218,13 +218,14 @@
   </section>
   <section style="width:100%; height:auto; cursor: pointer;" onclick="window.location.href='./goethe.html';" >
     <div class="w-embed" >
-        <video class="aframe-video" id="video6" 
-            style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto"  >
-            <source src="./videos/Screencast_Humboldt_mobile.mp4" autoplay muted playsinline allowfullscreen="false" type="video/mp4" media="(max-width: 768px)" preload="auto">
-            <!-- Höhere Auflösung für größere Bildschirme -->
-            <source src="./videos/Screencast_Goethe.mp4" type="video/mp4" media="(min-width: 769px)" preload="auto">
-        </video>
+      <video class="aframe-video" id="video6"
+      style="width:100%; height:auto; border:none; object-fit:cover;"
+      autoplay muted playsinline preload="metadata">
+   <!-- Mobile Video -->
+   <source src="./videos/Screencast_Humboldt_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
+   <!-- Höhere Auflösung für größere Bildschirme -->
+   <source src="./videos/Screencast_Goethe.mp4" type="video/mp4" media="(min-width: 769px)">
+</video>
     </div>
 </section>
   <div class="footer">
