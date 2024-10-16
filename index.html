@@ -85,7 +85,10 @@
         <video class="aframe-video" id="video1"
             style="width:100%; height:auto; border:none; object-fit:cover;" oncanplay="this.play();"
             muted preload="auto"  >
-            <source src="./videos/Screencast_Humboldt.mp4" type="video/mp4">
+            <!-- Niedrigere Auflösung für mobile Geräte -->
+            <source src="./videos/Screencast_Humboldt_mobile.mp4" type="video/mp4" media="(max-width: 768px)" preload="metadata">
+            <!-- Höhere Auflösung für größere Bildschirme -->
+            <source src="./videos/Screencast_Humboldt.mp4" type="video/mp4" media="(min-width: 769px)" preload="auto">
         </video>
     </div>
 </section>
