@@ -74,8 +74,8 @@
     <section style="width:100%; height:auto; cursor: pointer;" onclick="window.location.href='Humboldt.html';" >
       <div class="w-embed">
           <video class="aframe-video" id="video1"
-              style="width:100%; height:auto; border:none; object-fit:cover;"
-              muted preload="auto" autoplay >
+              style="width:100%; height:auto; border:none; object-fit:cover;" oncanplay="this.play();"
+              muted preload="auto"  >
               <source src="./videos/Screencast_Humboldt.mp4" type="video/mp4">
           </video>
       </div>
@@ -102,7 +102,7 @@
     <div class="w-embed">
         <video class="aframe-video" id="video2"
             style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto" autoplay >
+            muted preload="auto"  >
             <source src="./videos/Screencast_Luise.mp4" type="video/mp4">
         </video>
     </div>
@@ -128,7 +128,7 @@
     <div class="w-embed">
         <video class="aframe-video" id="video3"
             style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto" autoplay >
+            muted preload="auto"  >
             <source src="./videos/Screencast_Wann.mp4" type="video/mp4">
         </video>
     </div>
@@ -152,7 +152,7 @@
     <div class="w-embed">
         <video class="aframe-video" id="video4"
             style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto" autoplay >
+            muted preload="auto"  >
             <source src="./videos/Screencast_Wanderer.mp4" type="video/mp4">
         </video>
     </div>
@@ -176,7 +176,7 @@
     <div class="w-embed">
         <video class="aframe-video" id="video5"
             style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto" autoplay >
+            muted preload="auto"  >
             <source src="./videos/Screencast_CMH.mp4" type="video/mp4">
         </video>
     </div>
@@ -199,7 +199,7 @@
     <div class="w-embed" >
         <video class="aframe-video" id="video6" 
             style="width:100%; height:auto; border:none; object-fit:cover;"
-            muted preload="auto" autoplay >
+            muted preload="auto"  >
             <source src="./videos/Screencast_Goethe.mp4" type="video/mp4">
         </video>
     </div>
@@ -234,72 +234,58 @@
 
  
 
-// Wir holen alle Video-Elemente, die die Klasse 'aframe-video' haben
 const videos = document.querySelectorAll('.aframe-video');
 
-let isScrolling;  // Variable, um den Scroll-Status zu verfolgen
-let lastScrollTime = 0; // Verfolgt die Zeit der letzten Berechnung der Video-Position
+let isScrolling;
+let lastScrollTime = 0;
 
-// Funktion zur Steuerung der Videos anhand der Scroll-Position
 function controlVideoScroll() {
     videos.forEach(video => {
-        const rect = video.getBoundingClientRect();  // Die aktuelle Position des Videos im Sichtbereich
-        const videoHeight = rect.height;             // Höhe des Videos
-        const videoTop = rect.top;                  // Abstand des Videos vom oberen Rand des Viewports
-        const windowHeight = window.innerHeight;    // Höhe des Browserfensters
+        const rect = video.getBoundingClientRect();  
+        const videoHeight = rect.height;             
+        const videoTop = rect.top;                 
+        const windowHeight = window.innerHeight;
 
-        // Berechne den Anteil des Videos, der im Sichtbereich ist
         const visiblePercentage = Math.min(
             Math.max(0, (windowHeight - videoTop) / (windowHeight + videoHeight)),
             1
         );
 
-        const videoDuration = video.duration;  // Die Dauer des Videos in Sekunden
-
-        // Berechne die Position des Videos (currentTime) basierend auf dem Sichtbarkeitsgrad
+        const videoDuration = video.duration;  
         const currentTime = videoDuration * visiblePercentage;
 
-        // Nur die aktuelle Zeit des Videos anpassen, wenn sich die Scroll-Position signifikant verändert
         const now = Date.now();
-        if (now - lastScrollTime > 60) { // Berechne alle 60ms die Zeit
-            video.currentTime = currentTime; // Setze die aktuelle Zeit des Videos
-            lastScrollTime = now; // Aktualisiere den Zeitstempel der letzten Berechnung
+        if (now - lastScrollTime > 60) {  // Striktere Zeitbegrenzung
+            video.currentTime = currentTime; 
+            lastScrollTime = now; 
         }
 
-        // Wenn das Video im sichtbaren Bereich ist und nicht abgespielt wird, starte es
         if (visiblePercentage > 0 && visiblePercentage < 1 && video.paused) {
             video.play();
-        }
-        // Wenn das Video nicht mehr im sichtbaren Bereich ist, stoppe es
-        else if (visiblePercentage === 0 && !video.paused) {
+        } else if (visiblePercentage === 0 && !video.paused) {
             video.pause();
         }
     });
 }
 
-// Funktion, die beim Scrollen aufgerufen wird, um das Scrollen zu überwachen
 function onScroll() {
-    // Die eigentliche Steuerung der Videos
     controlVideoScroll();
 
-    // Löschen des vorherigen Timers, um die Pause-Überprüfung zu verzögern
     clearTimeout(isScrolling);
 
-    // Setzen wir einen neuen Timer, um zu prüfen, ob das Scrollen inaktiv ist
     isScrolling = setTimeout(() => {
-        // Wenn der Benutzer stoppt zu scrollen, pausieren wir alle Videos
         videos.forEach(video => {
             if (!video.paused) {
-                video.pause();
+                const rect = video.getBoundingClientRect();
+                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                    video.pause();
+                }
             }
         });
-    }, 200);  // Wenn 200 Millisekunden lang nicht gescrollt wird, pausieren wir die Videos
+    }, 300);  // Etwas längeres Timeout für das Pausieren
 }
 
-// Scroll-Event-Listener hinzufügen, um die Video-Steuerung bei jedem Scrollen zu aktivieren
 window.addEventListener('scroll', onScroll);
-
-// Sicherstellen, dass das auch bei Fenstergrößenänderung funktioniert
 window.addEventListener('resize', controlVideoScroll);
 
 

@@ -437,6 +437,26 @@ event-set__enter5="_target: #Zinnkrug_greifbar; _event: click; animation.propert
     
      <script>
 
+    // Funktion zur Anpassung der Textbreite basierend auf der Bildschirmgröße
+    function adjustTextWidth() {
+      const timerText = document.getElementById('timerText');
+      
+      // Bildschirmbreitenabfrage: Smartphone vs. Tablet/Desktop
+      if (window.innerWidth <= 768) {
+        // Smartphones (kleinere Breite)
+        timerText.setAttribute('text', 'width', '2');
+      } else {
+        // Tablets und größere Geräte
+        timerText.setAttribute('text', 'width', '3');
+      }
+    }
+
+    // Beim Laden der Seite ausführen
+    adjustTextWidth();
+
+    // Neu berechnen, wenn die Größe des Fensters geändert wird
+    window.addEventListener('resize', adjustTextWidth);
+
 
 
        // Prüfen, ob die Seite in einem iframe geladen ist
