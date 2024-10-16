@@ -1,3 +1,71 @@
+/* Standard-Layout für Desktops: Bild ausgeblendet */
+.mobile-layout, .mobile-image, .mobile-header{
+  display: none;
+}
+
+/* Media Query für Tablets und Mobilgeräte */
+@media (max-width: 1024px) {
+  .mobile-layout {
+      display: flex;              /* Flexbox für nebeneinander Anordnung */
+      flex-direction: row;        /* Horizontal nebeneinander */
+      align-items: center;        /* Vertikale Ausrichtung */
+      justify-content: space-between; /* Platz dazwischen */
+      margin-bottom: -25px;
+  }
+
+  .mobile-layout .mobile-image {
+      display: block;             /* Bild wird auf mobilen Geräten angezeigt */
+      width: 30%;                 /* Bild auf 50% der Breite beschränken */
+      height: auto;               /* Automatische Höhe beibehalten */
+      padding-right:20px;
+      padding-left:20px;
+  }
+
+  .mobile-layout .mobile-header {
+      width: 80%;
+      display:flex;                 /* Überschrift auf 50% der Breite */
+      text-align: left;            /* Optional: Links ausrichten */
+     
+      color: #161616;
+    text-align: left;
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 150%;        /* Optional: Etwas Platz links */
+  }
+.characterheaders{
+display:none;      /* Optional: Etwas Platz links */
+}
+}
+
+@media (max-width: 479px) {
+  .mobile-layout .mobile-header {
+    width: 60%;
+    display:flex;                 /* Überschrift auf 50% der Breite */
+    text-align: left;            /* Optional: Links ausrichten */
+   padding-left: 10px;
+    color: #161616;
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 150%;        /* Optional: Etwas Platz links */
+}
+
+.mobile-layout .mobile-image {
+  display: block;             /* Bild wird auf mobilen Geräten angezeigt */
+  width: 35%;                 /* Bild auf 50% der Breite beschränken */
+  height: auto;               /* Automatische Höhe beibehalten */
+}
+
+.mobile-layout {
+  margin-bottom: 1px;
+}
+
+
+}
+
+
+
+
 :root {
   --steel-blue: #fff;
   --steel-blue-2: #2e80b6;
@@ -38,13 +106,14 @@
 .aframe-video
 {
 padding-top: 5%;
+
 }
 
 
 
 @media (max-width: 1024px) {
 .wann, .luise, .wanderer, .humboldt, .hutschi, .goethe {
-  padding-top: 25%;
+  padding-top: 25% !important;
 }
 
 .aframe-video 
