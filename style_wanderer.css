@@ -75,6 +75,7 @@ video {
   position: fixed;
   z-index: 1001; /* Stellt sicher, dass der Container über anderen Elementen liegt */
   bottom: 0;
+    left: 0;
   width: 100%;
   height: 50px;
   background-color: #fff; /* Hintergrundfarbe des Streifens auf weiß gesetzt */
@@ -96,7 +97,7 @@ video {
   color: #333; /* Textfarbe auf Blau gesetzt */
   text-decoration: none; /* Entfernt die Unterstreichung */
   border-radius: 5px; /* Abgerundete Ecken */
-  font-size: 16px;   /* Schriftgröße */
+  font-size: 25px;   /* Schriftgröße */
   font-weight: 600;  /* Schrift fett (semi-bold) */
   transition: background-color 0.3s ease; /* Sanfter Übergang für Hover */
   font-family: 'Fira Sans', sans-serif; /* Schriftart auf Fira Sans gesetzt */
@@ -136,12 +137,11 @@ video {
 }
 
 .right-arrow {
-  padding: 0 0 0 15%;
   z-index: 10005;
 }
 
 .left-arrow {
-  padding: 0 0 0 15%;
+  margin: 0 0 0 15%;
   z-index: 10005;
 }
 
@@ -224,11 +224,122 @@ video {
 
 /* Media Query für Landscape-Modus auf Smartphones */
 @media only screen and (max-width: 768px) and (orientation: landscape) {
+  #nutzerhinweis {
+    width: 55% !important; /* Bildgröße auf Tablets etwas größer, um es besser sichtbar zu machen */
+    max-width: 55% !important; /* Maximale Bildgröße bei größeren Tablets, um nicht zu groß zu werden */
+    padding-bottom: 5%;
+  }
+
   .video-container {
-      top: 10%; /* Etwas näher am oberen Rand im Landscape-Modus */
-      left: 5%;
-      right: 5%;
-      width: 80vw; /* Reduziert die Breite etwas im Landscape-Modus */
-      height: auto; /* Beibehaltung der automatischen Höhe */
+    top: 20% !important; /* Etwas näher am oberen Rand im Landscape-Modus */
+    left: 10%;
+    right: 10%;
+    width: 80vw; /* Reduziert die Breite etwas im Landscape-Modus */
+    height: auto; /* Beibehaltung der automatischen Höhe */
+}
+
+#start-button {
+  padding-bottom: 10%;
+  width: 25% !important; /* Start-Button größer, da der Bildschirm kleiner ist */
+  top: 85% !important; /* Button weiter unten für kleinere Bildschirme */
+}
+
+}
+
+
+/* Media Query für Hochkant-Modus auf iPads (Portrait) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  #nutzerhinweis {
+    content: url('./img/Nutzerhinweis_Tablet.png');
+    width: 80% !important; /* Bildgröße auf iPads im Hochkant-Modus */
+    max-width: 80% !important; /* Maximale Bildgröße */
+    padding-bottom: 5%;
+  }
+
+  .video-container {
+    top: 0% !important; /* Nähert die Container an den oberen Rand im Hochkant-Modus */
+    left: 10%;
+    right: 10%;
+    width: 80vw; /* Breite bleibt im Hochkant-Modus relativ zum Viewport */
+    height: auto; /* Automatische Höhe beibehalten */
+  }
+
+  #start-button {
+    padding-bottom: 10%;
+    width: 30% !important; /* Größerer Start-Button */
+    top: 85% !important; /* Button weiter unten */
+  }
+}
+
+/* Media Query für Landscape-Modus auf iPads */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #nutzerhinweis {
+    content: url('./img/Nutzerhinweis_Tablet.png');
+    width: 50% !important; /* Kleinere Bildgröße im Landscape-Modus */
+    max-width: 50% !important; /* Maximale Bildgröße */
+    padding-bottom: 5%;
+  }
+
+  .video-container {
+    top: 0% !important; /* Container weiter nach oben verschieben */
+    left: 10%;
+    right: 10%;
+    width: 80vw; /* Breite im Landscape-Modus */
+    height: auto; /* Höhe beibehalten */
+  }
+
+  #start-button {
+    padding-bottom: 10%;
+    width: 25% !important; /* Start-Button auf iPads im Landscape-Modus */
+    top: 85% !important; /* Button weiter unten */
+  }
+}
+
+
+/* Media Query für Hochkant-Modus auf iPads (Portrait) */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  #nutzerhinweis {
+    content: url('./img/Nutzerhinweis_Tablet.png');
+    width: 80% !important; /* Bildgröße auf iPads im Hochkant-Modus */
+    max-width: 80% !important; /* Maximale Bildgröße */
+    padding-bottom: 5%;
+  }
+
+  .video-container {
+    top: 0% !important; /* Nähert die Container an den oberen Rand im Hochkant-Modus */
+    left: 10%;
+    right: 10%;
+    width: 80vw; /* Breite bleibt im Hochkant-Modus relativ zum Viewport */
+    height: auto; /* Automatische Höhe beibehalten */
+  }
+
+  #start-button {
+    padding-bottom: 10%;
+    width: 30% !important; /* Größerer Start-Button */
+    top: 85% !important; /* Button weiter unten */
+  }
+}
+
+/* Media Query für Landscape-Modus auf iPads */
+@media only screen and (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #nutzerhinweis {
+    content: url('./img/Nutzerhinweis_Tablet.png');
+    width: 50% !important; /* Kleinere Bildgröße im Landscape-Modus */
+    max-width: 50% !important; /* Maximale Bildgröße */
+    padding-bottom: 5%;
+  }
+
+  .video-container {
+    top: 0% !important; /* Container weiter nach oben verschieben */
+    left: 10%;
+    right: 10%;
+    width: 80vw; /* Breite im Landscape-Modus */
+    height: auto; /* Höhe beibehalten */
+  }
+
+  #start-button {
+    padding-bottom: 10%;
+    width: 25% !important; /* Start-Button auf iPads im Landscape-Modus */
+    top: 85% !important; /* Button weiter unten */
   }
 }
