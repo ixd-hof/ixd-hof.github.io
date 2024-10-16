@@ -84,11 +84,11 @@
     <div class="w-embed">
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_Humboldt_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_Humboldt.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_Humboldt.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -114,11 +114,11 @@
     <div class="w-embed">
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_Luise_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_Luise.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_Luise.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -143,11 +143,11 @@
     <div class="w-embed">
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_Wann_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_Wann.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_Wann.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -170,11 +170,11 @@
     <div class="w-embed">
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_Wanderer_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_Wanderer.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_Wanderer.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -197,11 +197,11 @@
     <div class="w-embed">
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_CMH_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_CMH.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_CMH.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -223,11 +223,11 @@
     <div class="w-embed" >
       <video class="aframe-video" id="video6"
       style="width:100%; height:auto; border:none; object-fit:cover;"
-      autoplay muted playsinline preload="metadata">
+      autoplay loop muted playsinline preload="metadata">
    <!-- Mobile Video -->
    <source src="./videos/Screencast_Goethe_mobile.mp4" type="video/mp4" media="(max-width: 768px)">
    <!-- Höhere Auflösung für größere Bildschirme -->
-   <source src="./videos/Screencast_Goethe.mp4" type="video/mp4" media="(min-width: 769px)">
+   <source src="./videos/Screencast_Goethe.mp4" type="video/mp4" media="(min-width: 1024px)">
 </video>
     </div>
 </section>
@@ -268,7 +268,7 @@ let lastScrollTime = 0;
 
 // Funktion zum Überprüfen, ob das Gerät ein Smartphone ist
 function isSmartphone() {
-    return window.innerWidth <= 768;  // Bezieht sich auf Bildschirmgrößen unter 768px (Smartphones)
+    return window.innerWidth <= 1024;  // Bezieht sich auf Bildschirmgrößen unter 768px (Smartphones)
 }
 
 function controlVideoScroll() {
