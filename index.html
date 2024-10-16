@@ -259,9 +259,14 @@
 
 const videos = document.querySelectorAll('.aframe-video');
 
-let isScrolling; 
+let isScrolling;
 let lastScrollTime = 0;
 let isPaused = false;  // Flag, das anzeigt, ob das Video pausiert ist
+
+// Funktion zum Überprüfen, ob das Gerät ein Smartphone ist
+function isSmartphone() {
+    return window.innerWidth <= 768;  // Bezieht sich auf Bildschirmgrößen unter 768px (Smartphones)
+}
 
 function controlVideoScroll() {
     videos.forEach(video => {
@@ -270,7 +275,7 @@ function controlVideoScroll() {
         const videoTop = rect.top;                 
         const windowHeight = window.innerHeight;
 
-        // Berechnung des sichtbaren Anteils des Videos (kann be ignoriert werden)
+        // Berechnung des sichtbaren Anteils des Videos (kann ignoriert werden)
         const visiblePercentage = Math.min(
             Math.max(0, (windowHeight - videoTop) / (windowHeight + videoHeight)),
             1
@@ -281,42 +286,55 @@ function controlVideoScroll() {
 
         const now = Date.now();
 
-        // Aktualisiert die Videozeit, wenn das Scrollen eine neue Zeit erreicht hat
-        if (now - lastScrollTime > 60) {
-            video.currentTime = currentTime; 
-            lastScrollTime = now; 
+        // Wenn auf einem Smartphone, abspielen, sobald das Video im Sichtbereich ist
+        if (isSmartphone()) {
+            if (visiblePercentage > 0 && video.paused) {
+                video.play();
+                isPaused = false;
+            } else if (visiblePercentage === 0 && !video.paused) {
+                video.pause();
+                isPaused = true;
+            }
+        } 
+        // Wenn auf einem Tablet oder Desktop, das Scrollen beeinflusst das Abspielen
+        else {
+            if (now - lastScrollTime > 60) {
+                video.currentTime = currentTime; 
+                lastScrollTime = now; 
+            }
         }
     });
 }
 
 function onScroll() {
-    controlVideoScroll();
+    // Wenn auf einem Smartphone wird das Scrollen das Video pausieren und abspielen steuern
+    if (!isSmartphone()) {
+        clearTimeout(isScrolling);
 
-    clearTimeout(isScrolling);
-
-    // Beim Scrollen sofort abspielen, egal ob das Video sichtbar ist oder nicht
-    videos.forEach(video => {
-        if (video.paused) {
-            video.play(); // Wenn das Video pausiert ist, spiele es ab
-            isPaused = false;
-        }
-    });
-
-    // Timeout, um das Scrollen zu stoppen und zu überprüfen, ob das Video pausiert werden soll
-    isScrolling = setTimeout(() => {
-        // Wenn der Benutzer das Scrollen gestoppt hat, pausiere alle Videos, auch wenn sie nur teilweise sichtbar sind
+        // Beim Scrollen sofort abspielen, egal ob das Video sichtbar ist oder nicht
         videos.forEach(video => {
-            if (!video.paused) {
-                video.pause();  // Pausiere das Video, wenn der Benutzer das Scrollen stoppt
-                isPaused = true;
+            if (video.paused) {
+                video.play(); // Wenn das Video pausiert ist, spiele es ab
+                isPaused = false;
             }
         });
-    }, 200);  // Timeout von 200ms nach dem Stoppen des Scrollens
+
+        // Timeout, um das Scrollen zu stoppen und zu überprüfen, ob das Video pausiert werden soll
+        isScrolling = setTimeout(() => {
+            // Wenn der Benutzer das Scrollen gestoppt hat, pausiere alle Videos
+            videos.forEach(video => {
+                if (!video.paused) {
+                    video.pause();  // Pausiere das Video, wenn der Benutzer das Scrollen stoppt
+                    isPaused = true;
+                }
+            });
+        }, 200);  // Timeout von 200ms nach dem Stoppen des Scrollens
+    }
 }
 
+// Event-Listener für das Scrollen und das Vergrößern/Verkleinern des Fensters
 window.addEventListener('scroll', onScroll);
 window.addEventListener('resize', controlVideoScroll);
-
 
 </script>
 </body>
