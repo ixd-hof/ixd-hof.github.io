@@ -42,7 +42,7 @@ padding-top: 5%;
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
 .wann, .luise, .wanderer, .humboldt, .hutschi, .goethe {
   padding-top: 25%;
 }
