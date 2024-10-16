@@ -245,8 +245,9 @@
 
 const videos = document.querySelectorAll('.aframe-video');
 
-let isScrolling;
+let isScrolling; 
 let lastScrollTime = 0;
+let isPaused = false;  // Flag, das anzeigt, ob das Video pausiert ist
 
 function controlVideoScroll() {
     videos.forEach(video => {
@@ -255,6 +256,7 @@ function controlVideoScroll() {
         const videoTop = rect.top;                 
         const windowHeight = window.innerHeight;
 
+        // Berechnung des sichtbaren Anteils des Videos (kann be ignoriert werden)
         const visiblePercentage = Math.min(
             Math.max(0, (windowHeight - videoTop) / (windowHeight + videoHeight)),
             1
@@ -264,15 +266,11 @@ function controlVideoScroll() {
         const currentTime = videoDuration * visiblePercentage;
 
         const now = Date.now();
-        if (now - lastScrollTime > 60) {  // Striktere Zeitbegrenzung
+
+        // Aktualisiert die Videozeit, wenn das Scrollen eine neue Zeit erreicht hat
+        if (now - lastScrollTime > 60) {
             video.currentTime = currentTime; 
             lastScrollTime = now; 
-        }
-
-        if (visiblePercentage > 0 && visiblePercentage < 1 && video.paused) {
-            video.play();
-        } else if (visiblePercentage === 0 && !video.paused) {
-            video.pause();
         }
     });
 }
@@ -282,16 +280,24 @@ function onScroll() {
 
     clearTimeout(isScrolling);
 
+    // Beim Scrollen sofort abspielen, egal ob das Video sichtbar ist oder nicht
+    videos.forEach(video => {
+        if (video.paused) {
+            video.play(); // Wenn das Video pausiert ist, spiele es ab
+            isPaused = false;
+        }
+    });
+
+    // Timeout, um das Scrollen zu stoppen und zu überprüfen, ob das Video pausiert werden soll
     isScrolling = setTimeout(() => {
+        // Wenn der Benutzer das Scrollen gestoppt hat, pausiere alle Videos, auch wenn sie nur teilweise sichtbar sind
         videos.forEach(video => {
             if (!video.paused) {
-                const rect = video.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    video.pause();
-                }
+                video.pause();  // Pausiere das Video, wenn der Benutzer das Scrollen stoppt
+                isPaused = true;
             }
         });
-    }, 300);  // Etwas längeres Timeout für das Pausieren
+    }, 200);  // Timeout von 200ms nach dem Stoppen des Scrollens
 }
 
 window.addEventListener('scroll', onScroll);
