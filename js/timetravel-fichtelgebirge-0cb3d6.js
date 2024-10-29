@@ -1,4 +1,26 @@
 
+function checkPassword() {
+  var password = document.getElementById("password").value;
+  if (password === ")52@2vZT6C]b") {
+      // Speichere den Login-Zustand in der Session
+      sessionStorage.setItem("loggedIn", "true");
+      // Zeige den geschützten Inhalt an und verstecke das Passwortfeld
+      document.getElementById("content").style.display = "block";
+      document.getElementById("passwordPrompt").style.display = "none";
+  } else {
+      alert("Falsches Passwort!");
+  }
+}
+
+// Überprüfe bei Seitenaufruf, ob der Nutzer bereits eingeloggt ist
+window.onload = function() {
+  if (sessionStorage.getItem("loggedIn") === "true") {
+      // Wenn der Nutzer eingeloggt ist, zeige den Inhalt und verstecke das Passwortfeld
+      document.getElementById("content").style.display = "block";
+      document.getElementById("passwordPrompt").style.display = "none";
+  }
+};
+
 
 (() => {
   var __create = Object.create;
