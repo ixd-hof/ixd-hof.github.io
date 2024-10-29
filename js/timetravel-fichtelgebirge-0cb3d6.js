@@ -1,27 +1,4 @@
 
-function checkPassword() {
-  var password = document.getElementById("password").value;
-  if (password === ")52@2vZT6C]b") {
-      // Speichere den Login-Zustand in der Session
-      sessionStorage.setItem("loggedIn", "true");
-      // Zeige den geschützten Inhalt an und verstecke das Passwortfeld
-      document.getElementById("content").style.display = "block";
-      document.getElementById("passwordPrompt").style.display = "none";
-  } else {
-      alert("Falsches Passwort!");
-  }
-}
-
-// Überprüfe bei Seitenaufruf, ob der Nutzer bereits eingeloggt ist
-window.onload = function() {
-  if (sessionStorage.getItem("loggedIn") === "true") {
-      // Wenn der Nutzer eingeloggt ist, zeige den Inhalt und verstecke das Passwortfeld
-      document.getElementById("content").style.display = "block";
-      document.getElementById("passwordPrompt").style.display = "none";
-  }
-};
-
-
 (() => {
   var __create = Object.create;
   var __defProp = Object.defineProperty;
@@ -12683,3 +12660,26 @@ timm/lib/timm.js:
 Webflow.require('ix2').init(
 {"events":{"e-3":{"id":"e-3","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-4"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|270e8437-efa3-df11-d438-de69b23e41e9","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|270e8437-efa3-df11-d438-de69b23e41e9","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":0,"direction":"BOTTOM","effectIn":true},"createdOn":1582925147477},"e-5":{"id":"e-5","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-6"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|29c25774-570b-ddb2-69b5-f4ddbb194afd","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|29c25774-570b-ddb2-69b5-f4ddbb194afd","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":100,"direction":"BOTTOM","effectIn":true},"createdOn":1582925159926},"e-7":{"id":"e-7","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-8"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|49e69b8a-ef40-4d84-1f92-d2617143b8db","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|49e69b8a-ef40-4d84-1f92-d2617143b8db","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":200,"direction":"BOTTOM","effectIn":true},"createdOn":1582925172529},"e-9":{"id":"e-9","name":"","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-10"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|33404124-89d9-58b1-64f9-e67d0fdf08ba","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|33404124-89d9-58b1-64f9-e67d0fdf08ba","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":200,"direction":"BOTTOM","effectIn":true},"createdOn":1728039677799},"e-11":{"id":"e-11","name":"","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-12"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|42800f88-3ba2-3ae3-635d-09b4cf6d54ac","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|42800f88-3ba2-3ae3-635d-09b4cf6d54ac","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":100,"direction":"BOTTOM","effectIn":true},"createdOn":1728039699721},"e-13":{"id":"e-13","name":"","animationType":"preset","eventTypeId":"SCROLL_INTO_VIEW","action":{"id":"","actionTypeId":"SLIDE_EFFECT","instant":false,"config":{"actionListId":"slideInBottom","autoStopEventId":"e-14"}},"mediaQueries":["main","medium","small","tiny"],"target":{"id":"66fbc5eb567a83b9fd4ff63f|87c8a227-b72c-de23-7167-6b0d6aac627a","appliesTo":"ELEMENT","styleBlockIds":[]},"targets":[{"id":"66fbc5eb567a83b9fd4ff63f|87c8a227-b72c-de23-7167-6b0d6aac627a","appliesTo":"ELEMENT","styleBlockIds":[]}],"config":{"loop":false,"playInReverse":false,"scrollOffsetValue":20,"scrollOffsetUnit":"%","delay":0,"direction":"BOTTOM","effectIn":true},"createdOn":1728039704680}},"actionLists":{"slideInBottom":{"id":"slideInBottom","useFirstGroupAsInitialState":true,"actionItemGroups":[{"actionItems":[{"actionTypeId":"STYLE_OPACITY","config":{"delay":0,"duration":0,"target":{"id":"N/A","appliesTo":"TRIGGER_ELEMENT","useEventTarget":true},"value":0}}]},{"actionItems":[{"actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"duration":0,"target":{"id":"N/A","appliesTo":"TRIGGER_ELEMENT","useEventTarget":true},"xValue":0,"yValue":100,"xUnit":"PX","yUnit":"PX","zUnit":"PX"}}]},{"actionItems":[{"actionTypeId":"TRANSFORM_MOVE","config":{"delay":0,"easing":"outQuart","duration":1000,"target":{"id":"N/A","appliesTo":"TRIGGER_ELEMENT","useEventTarget":true},"xValue":0,"yValue":0,"xUnit":"PX","yUnit":"PX","zUnit":"PX"}},{"actionTypeId":"STYLE_OPACITY","config":{"delay":0,"easing":"outQuart","duration":1000,"target":{"id":"N/A","appliesTo":"TRIGGER_ELEMENT","useEventTarget":true},"value":1}}]}]}},"site":{"mediaQueries":[{"key":"main","min":992,"max":10000},{"key":"medium","min":768,"max":991},{"key":"small","min":480,"max":767},{"key":"tiny","min":0,"max":479}]}}
 );
+
+
+function checkPassword() {
+  var password = document.getElementById("password").value;
+  if (password === ")52@2vZT6C]b") {
+      // Speichere den Login-Zustand in der Session
+      sessionStorage.setItem("loggedIn", "true");
+      // Zeige den geschützten Inhalt an und verstecke das Passwortfeld
+      document.getElementById("content").style.display = "block";
+      document.getElementById("passwordPrompt").style.display = "none";
+  } else {
+      alert("Falsches Passwort!");
+  }
+}
+
+// Überprüfe bei Seitenaufruf, ob der Nutzer bereits eingeloggt ist
+window.onload = function() {
+  if (sessionStorage.getItem("loggedIn") === "true") {
+      // Wenn der Nutzer eingeloggt ist, zeige den Inhalt und verstecke das Passwortfeld
+      document.getElementById("content").style.display = "block";
+      document.getElementById("passwordPrompt").style.display = "none";
+  }
+};
