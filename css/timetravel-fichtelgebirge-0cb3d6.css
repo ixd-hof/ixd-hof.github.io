@@ -1,3 +1,66 @@
+
+/* Passwort-Prompt zentrieren */
+#passwordPrompt {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  width:50%;
+
+ /* Absolute Positionierung für Zentrierung */
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+/* Input und Button Styling */
+#password {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* GIF wird nur auf Bildschirmen mit max-width: 1024px angezeigt */
+.responsive-gif {
+  display: block;
+  padding-top: 50px;
+}
+
+.responsive-video {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  /* Auf größeren Bildschirmen wird das Video angezeigt und das GIF ausgeblendet */
+  .responsive-gif {
+      display: none;
+  }
+  .responsive-video {
+      display: block;
+  }
+}
+
 /* Standard-Layout für Desktops: Bild ausgeblendet */
 .mobile-layout, .mobile-image, .mobile-header{
   display: none;
@@ -103,17 +166,13 @@ display:none;      /* Optional: Etwas Platz links */
   --6db529: var(--steel-blue);
 }
 
-.aframe-video
-{
-padding-top: 5%;
 
-}
 
 
 
 @media (max-width: 1024px) {
 .wann, .luise, .wanderer, .humboldt, .hutschi, .goethe {
-  padding-top: 25% !important;
+  padding-top: 10% !important;
 }
 
 .aframe-video 
@@ -911,7 +970,7 @@ p {
 
 .intro {
   background-color: #f7fbff;
-  height: 80vh;
+  height: auto;
   margin-top: 0;
   margin-bottom: 0;
   padding-top: 100px;
