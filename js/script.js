@@ -1,3 +1,13 @@
+function checkPassword() {
+  var password = document.getElementById("password").value;
+  if (password === ")52@2vZT6C]b") {
+      document.getElementById("content").style.display = "block";
+      document.getElementById("passwordPrompt").style.display = "none";
+  } else {
+      alert("Falsches Passwort!");
+  }
+}
+ 
  document.addEventListener('DOMContentLoaded', function () {
         const trigger6 = document.querySelector('#trigger6');
         const trigger7 = document.querySelector('#trigger7');
